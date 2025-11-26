@@ -1,0 +1,15 @@
+{
+  "nav": {
+    "accueil": "Home",
+    "actualites": "News",
+    "nos-activites": "Our Activities",
+    "notre-equipe": "Our Team",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "common": {
+    "read_more": "Read more",
+    "learn_more": "LEARN MORE",
+    "contact_us": "Contact us"
+  }
+}
