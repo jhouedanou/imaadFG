@@ -1,0 +1,105 @@
+{
+  "site": {
+    "name": "IMAAD Financial Group",
+    "logo": "/assets/images/logo-imaad.png",
+    "tagline": "Catalyseur de la Souveraineté et de la Croissance Durable",
+    "website": "www.imaadfg.com",
+    "contact": {
+      "email": "info@imaadfg.com",
+      "phone": "(+221) 772457987"
+    }
+  },
+  "navigation": [
+    {
+      "id": "accueil",
+      "label": "Accueil",
+      "path": "/",
+      "isActive": true
+    },
+    {
+      "id": "actualites",
+      "label": "Actualités",
+      "path": "/actualites"
+    },
+    {
+      "id": "nos-activites",
+      "label": "Nos activités",
+      "path": "/nos-activites"
+    },
+    {
+      "id": "notre-equipe",
+      "label": "Notre équipe",
+      "path": "/notre-equipe"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "path": "/contact"
+    },
+    {
+      "id": "blog",
+      "label": "Blog",
+      "path": "/blog"
+    }
+  ],
+  "languages": ["FR", "EN", "PT"],
+  "pages": {
+    "accueil": {
+      "hero": {
+        "title": "IMAAD FINANCIAL GROUP",
+        "subtitle": "Catalyseur de la Souveraineté et de la Croissance Durable",
+        "backgroundImage": "/assets/images/hero-skyline.jpg"
+      },
+      "presentation": {
+        "title": "Notre Essence",
+        "keywords": ["Souveraineté", "Impact", "Excellence"],
+        "description": "Imaad Financial Group (IFG) est une banque d'affaires Panafricaine indépendante spécialisée dans la structuration, le financement et la réalisation de projets structurants en Afrique, au Moyen-Orient et Amérique Latine.",
+        "objectif": "Accélérer la souveraineté financière des États, renforcer les capacités d'investissement des entreprises et créer des ponts entre capitaux internationaux et projets à fort impact économique, social et environnemental."
+      },
+      "valeurs": {
+        "title": "Nos valeurs",
+        "intro": "Nous plaçons la Finance au service du Développement, de la Compétitivité et de la Durabilité de nos Projets.",
+        "items": [
+          "Souveraineté et leadership économique",
+          "Excellence, discipline et innovation",
+          "Intégrité et confidentialité absolue",
+          "Résilience et vision long terme"
+        ]
+      },
+      "impact": {
+        "title": "Notre Impact",
+        "subtitle": "Des Résultats Mesurables, une Vision Durable.",
+        "stats": [
+          {
+            "value": "+1 milliard €",
+            "label": "mobilisés depuis 2020"
+          },
+          {
+            "value": "+20",
+            "label": "projets PPP finalisés ou en cours"
+          },
+          {
+            "value": "3 milliards €",
+            "label": "de portefeuille projets à fin 2024"
+          },
+          {
+            "value": "15",
+            "label": "pays africains couverts"
+          }
+        ],
+        "secteurs": [
+          "Énergie",
+          "Transport",
+          "Mines",
+          "Éducation",
+          "Immobilier",
+          "Santé",
+          "Eau",
+          "Agriculture",
+          "Recyclage",
+          "Technologie"
+        ]
+      }
+    }
+  }
+}

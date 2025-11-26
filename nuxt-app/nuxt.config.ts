@@ -57,7 +57,7 @@ export default defineNuxtConfig({
         file: 'pt.json'
       }
     ],
-    langDir: '../locales',
+    langDir: 'locales',
     defaultLocale: 'fr',
     strategy: 'prefix_except_default',
     detectBrowserLanguage: {

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 useHead({
   title: 'Accueil',
   meta: [
@@ -111,7 +113,7 @@ useHead({
     <section class="skrollable u-align-center u-clearfix u-container-align-center u-image u-parallax u-section-1" id="carousel_f9e6" data-image-width="2949" data-image-height="2155">
       <div class="u-clearfix u-sheet u-sheet-1">
         <img class="u-image u-image-default u-image-1" src="/images/logo-removebg-preview.png" alt="" data-image-width="693" data-image-height="1061" data-animation-name="customAnimationIn" data-animation-duration="3500" data-animation-direction="" data-animation-delay="500" data-animation-out="1" data-href="/" data-page-id="2017020947">
-        <p class="u-align-center u-custom-font u-font-roboto u-text u-text-custom-color-4 u-text-1" data-animation-name="customAnimationIn" data-animation-duration="4250" data-animation-delay="0" data-animation-direction=""> Au coeur de l’ Afrique, le monde de​ demain</p>
+        <p class="u-align-center u-custom-font u-font-roboto u-text u-text-custom-color-4 u-text-1" data-animation-name="customAnimationIn" data-animation-duration="4250" data-animation-delay="0" data-animation-direction="">{{ t('common.hero_tagline') }}</p>
       </div>
     </section>
     <section class="skrollable u-clearfix u-image u-valign-bottom u-section-2" id="sec-733d" data-image-width="1647" data-image-height="580">

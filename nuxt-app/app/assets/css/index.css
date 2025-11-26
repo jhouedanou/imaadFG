@@ -1,5 +1,5 @@
  .u-section-1 {
-  background-image: url("https://assets.nicepagecdn.com/23954ad7/5333801/images/Plandetravail1PAWEBSITE.png");
+  background-image: url("/images/bg.webp");
 }
 
 .u-section-1 .u-sheet-1 {
@@ -8,7 +8,7 @@
 
 .u-section-1 .u-image-1 {
   width: 289px;
-  height: 444px;
+  height: auto;
   --animation-custom_in-translate_x: 0px;
   --animation-custom_in-translate_y: 0px;
   --animation-custom_in-opacity: 0;
@@ -530,8 +530,8 @@
 }
 
 .u-section-3 .u-image-1 {
-  width: 376px;
-  height: 376px;
+  width: 250px;
+  height: auto;
   background-image: url("/images/logo-removebg-preview.png");
   background-position: 50% 50%;
   --animation-custom_in-translate_x: 0px;
