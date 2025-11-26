@@ -13,7 +13,7 @@ useHead({
   ],
   link: [
     { rel: 'canonical', href: 'https://.nicepage.io/' },
-    { rel: 'icon', href: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier3banque.png' },
+    { rel: 'icon', href: '/images/logo-removebg-preview.png' },
     { rel: 'stylesheet', href: 'https://capp.nicepage.com/cf7c9c13fc8a2049173f22a983fde2065a619052/nicepage.css', media: 'screen' }
   ],
   script: [
@@ -25,7 +25,7 @@ useHead({
         "@context": "http://schema.org",
         "@type": "Organization",
         "name": "Imaad capital Partners ",
-        "logo": "https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png",
+        "logo": "/images/logo-removebg-preview.png",
         "sameAs": []
       })
     }
@@ -77,7 +77,7 @@ useHead({
           </div>
         </nav>
         <a href="index.html" data-page-id="2017020947" class="u-align-center-md u-align-center-sm u-align-center-xs u-image u-logo u-image-1" data-image-width="693" data-image-height="1061" title="logo" data-lang-fr="2017020947" data-lang-en="2017020947" data-lang-pt="2017020947">
-          <img src="https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png" class="u-logo-image u-logo-image-1">
+          <img src="/images/logo-removebg-preview.png" class="u-logo-image u-logo-image-1">
         </a>
         <div class="u-h-spacing-12 u-language u-language-content-text u-language-layout-dropdown u-v-spacing-6 u-language-1" data-animation-name="" data-animation-duration="0" data-animation-direction="">
           <a class="u-language-active u-language-url" data-lang-text="FR" href="index.html#" data-language="fr" style="background-image: none;">
@@ -110,7 +110,7 @@ useHead({
       </div></header>
     <section class="skrollable u-align-center u-clearfix u-container-align-center u-image u-parallax u-section-1" id="carousel_f9e6" data-image-width="2949" data-image-height="2155">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <img class="u-image u-image-default u-image-1" src="https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png" alt="" data-image-width="693" data-image-height="1061" data-animation-name="customAnimationIn" data-animation-duration="3500" data-animation-direction="" data-animation-delay="500" data-animation-out="1" data-href="/" data-page-id="2017020947">
+        <img class="u-image u-image-default u-image-1" src="/images/logo-removebg-preview.png" alt="" data-image-width="693" data-image-height="1061" data-animation-name="customAnimationIn" data-animation-duration="3500" data-animation-direction="" data-animation-delay="500" data-animation-out="1" data-href="/" data-page-id="2017020947">
         <p class="u-align-center u-custom-font u-font-roboto u-text u-text-custom-color-4 u-text-1" data-animation-name="customAnimationIn" data-animation-duration="4250" data-animation-delay="0" data-animation-direction=""> Au coeur de l’ Afrique, le monde de​ demain</p>
       </div>
     </section>
@@ -397,7 +397,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
     
     <footer class="u-align-center-md u-align-center-sm u-align-center-xs u-clearfix u-custom-color-6 u-footer u-footer" id="sec-7778"><div class="u-clearfix u-sheet u-valign-middle-lg u-sheet-1">
         <a href="index.html" data-page-id="2017020947" class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-image u-logo u-image-1" data-image-width="693" data-image-height="1061" title="Accueil" data-lang-fr="2017020947" data-lang-en="2017020947" data-lang-pt="2017020947">
-          <img src="https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png" class="u-logo-image u-logo-image-1">
+          <img src="/images/logo-removebg-preview.png" class="u-logo-image u-logo-image-1">
         </a>
         <p class="u-align-center u-text u-text-1" data-lang-fr="​&amp;nbsp;Société Anonyme au capital social de 200.000.000 FCFA&amp;nbsp; RCCM: CI-ABJ-03-2021—B17-00048<br>&amp;nbsp;Siège social : Cocody Riviera IV, M’Pouto, Rue Sol Béni, Immeuble KAYOA, 1er étage, Abidjan Côte d’Ivoire&amp;nbsp;<br>Adresse postale : 04 BP 2998 Abidjan 04&amp;nbsp;<br>&amp;nbsp;infos@imaadcapitalpartners.com •&amp;nbsp;Cocody, Riviera Palmeraie&amp;nbsp;•&amp;nbsp;+225 07 88 12 21 21<br>" data-lang-en="​Public limited company with a capital of 200,000,000 FCFA - RCCM: CI-ABJ-03-2021-B17-00048<br>Head office: Cocody Riviera IV, M'Pouto, Rue Sol Béni, Immeuble KAYOA, 1st floor, Abidjan, Côte d'Ivoire<br>Postal address: 04 BP 2998 Abidjan 04" data-lang-pt="​Sociedade anónima com um capital social de 200.000.000 FCFA - RCCM: CI-ABJ-03-2021-B17-00048<br>Sede social: Cocody Riviera IV, M'Pouto, Rue Sol Béni, Immeuble KAYOA, 1st floor, Abidjan, Côte d'Ivoire<br>Endereço postal: 04 BP 2998 Abidjan 04"> &nbsp;Société Anonyme au capital social de 200.000.000 FCFA&nbsp; RCCM: CI-ABJ-03-2021—B17-00048<br>&nbsp;Siège social : Cocody Riviera IV, M’Pouto, Rue Sol Béni, Immeuble KAYOA, 1er étage, Abidjan Côte d’Ivoire&nbsp;<br>Adresse postale : 04 BP 2998 Abidjan 04&nbsp;<br>&nbsp;infos@imaadcapitalpartners.com •&nbsp;Cocody, Riviera Palmeraie&nbsp;•&nbsp;+225 07 88 12 21 21<br>
         </p>

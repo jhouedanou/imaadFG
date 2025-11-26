@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "IMAAD Financial Group",
-    "logo": "https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png",
+    "logo": "/images/logo-removebg-preview.png",
     "tagline": "Catalyseur de la Souveraineté et de la Croissance Durable",
     "website": "www.imaadfg.com",
     "contact": {
@@ -318,7 +318,7 @@
       "informations": {
         "email": "info@imaadfg.com",
         "phone": "(+221) 772457987",
-        "qrCode": "https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png"
+        "qrCode": "/images/logo-removebg-preview.png"
       },
       "bureaux": {
         "principaux": [

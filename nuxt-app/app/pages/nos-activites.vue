@@ -12,7 +12,7 @@ useHead({
     { property: 'og:type', content: 'website' }
   ],
   link: [
-    { rel: 'icon', href: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier3banque.png' },
+    { rel: 'icon', href: '/images/logo-removebg-preview.png' },
     { rel: 'stylesheet', href: 'https://capp.nicepage.com/cf7c9c13fc8a2049173f22a983fde2065a619052/nicepage.css', media: 'screen' }
   ],
   script: [
@@ -62,7 +62,7 @@ useHead({
           </div>
         </nav>
         <a href="index.html" data-page-id="2017020947" class="u-align-center-md u-align-center-sm u-align-center-xs u-image u-logo u-image-1" data-image-width="693" data-image-height="1061" title="logo" data-lang-fr="2017020947" data-lang-en="2017020947" data-lang-pt="2017020947">
-          <img src="https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png" class="u-logo-image u-logo-image-1">
+          <img src="/images/logo-removebg-preview.png" class="u-logo-image u-logo-image-1">
         </a>
         <div class="u-h-spacing-12 u-language u-language-content-text u-language-layout-dropdown u-v-spacing-6 u-language-1" data-animation-name="" data-animation-duration="0" data-animation-direction="">
           <a class="u-language-active u-language-url" data-lang-text="FR" href="Nos-activites.html#" data-language="fr" style="background-image: none;">
@@ -13122,7 +13122,7 @@ mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Décaissement 2<sup>e</sup> 
     
     <footer class="u-align-center-md u-align-center-sm u-align-center-xs u-clearfix u-custom-color-6 u-footer u-footer" id="sec-7778"><div class="u-clearfix u-sheet u-valign-middle-lg u-sheet-1">
         <a href="index.html" data-page-id="2017020947" class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-image u-logo u-image-1" data-image-width="693" data-image-height="1061" title="Accueil" data-lang-fr="2017020947" data-lang-en="2017020947" data-lang-pt="2017020947">
-          <img src="https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1AMAAD.png" class="u-logo-image u-logo-image-1">
+          <img src="/images/logo-removebg-preview.png" class="u-logo-image u-logo-image-1">
         </a>
         <p class="u-align-center u-text u-text-1" data-lang-fr="​&amp;nbsp;Société Anonyme au capital social de 200.000.000 FCFA&amp;nbsp; RCCM: CI-ABJ-03-2021—B17-00048<br>&amp;nbsp;Siège social : Cocody Riviera IV, M’Pouto, Rue Sol Béni, Immeuble KAYOA, 1er étage, Abidjan Côte d’Ivoire&amp;nbsp;<br>Adresse postale : 04 BP 2998 Abidjan 04&amp;nbsp;<br>&amp;nbsp;infos@imaadcapitalpartners.com •&amp;nbsp;Cocody, Riviera Palmeraie&amp;nbsp;•&amp;nbsp;+225 07 88 12 21 21<br>" data-lang-en="​Public limited company with a capital of 200,000,000 FCFA - RCCM: CI-ABJ-03-2021-B17-00048<br>Head office: Cocody Riviera IV, M'Pouto, Rue Sol Béni, Immeuble KAYOA, 1st floor, Abidjan, Côte d'Ivoire<br>Postal address: 04 BP 2998 Abidjan 04" data-lang-pt="​Sociedade anónima com um capital social de 200.000.000 FCFA - RCCM: CI-ABJ-03-2021-B17-00048<br>Sede social: Cocody Riviera IV, M'Pouto, Rue Sol Béni, Immeuble KAYOA, 1st floor, Abidjan, Côte d'Ivoire<br>Endereço postal: 04 BP 2998 Abidjan 04"> &nbsp;Société Anonyme au capital social de 200.000.000 FCFA&nbsp; RCCM: CI-ABJ-03-2021—B17-00048<br>&nbsp;Siège social : Cocody Riviera IV, M’Pouto, Rue Sol Béni, Immeuble KAYOA, 1er étage, Abidjan Côte d’Ivoire&nbsp;<br>Adresse postale : 04 BP 2998 Abidjan 04&nbsp;<br>&nbsp;infos@imaadcapitalpartners.com •&nbsp;Cocody, Riviera Palmeraie&nbsp;•&nbsp;+225 07 88 12 21 21<br>
         </p>
