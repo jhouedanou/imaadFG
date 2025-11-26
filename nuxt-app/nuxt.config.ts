@@ -13,7 +13,8 @@ export default defineNuxtConfig({
     '~/assets/css/nicepage-site.css',
     '~/assets/css/index.css',
     '~/assets/css/fonts.css',
-    '~/assets/css/Accueil-fonts.css'
+    '~/assets/css/Accueil-fonts.css',
+    '~/assets/css/logo-fix.css'
   ],
 
   modules: [
@@ -67,6 +68,24 @@ export default defineNuxtConfig({
     }
   },
 
+
+  image: {
+    // Configure image module to preserve aspect ratio
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+    densities: [1, 2],
+    quality: 80,
+    format: ['webp'],
+    // Désactiver l'optimisation automatique pour certaines images
+    domains: [],
+    dir: 'public'
+  },
 
   icon: {
     serverBundle: 'local'

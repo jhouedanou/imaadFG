@@ -1,0 +1,21 @@
+/* Fix pour préserver le ratio d'aspect du logo */
+.u-header .u-logo-image-1,
+.u-footer .u-logo-image-1 {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  object-position: center;
+}
+
+/* Assurer que le conteneur du logo respecte le ratio vertical */
+.u-header .u-image-1,
+.u-footer .u-image-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pour éviter que Nuxt Image recadre l'image */
+.u-logo-image img {
+  object-fit: contain !important;
+}
