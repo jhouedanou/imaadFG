@@ -1,11 +1,27 @@
 [build]
   command = "npm run build"
   publish = ".output/public"
+  functions = ".output/server"
 
 [build.environment]
   NODE_VERSION = "20"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
-# Redirects pour SPA/SSG
+# Redirections i18n pour Portugais
+[[redirects]]
+  from = "/pt/*"
+  to = "/pt/:splat"
+  status = 200
+  force = false
+
+# Redirections i18n pour Anglais
+[[redirects]]
+  from = "/en/*"
+  to = "/en/:splat"
+  status = 200
+  force = false
+
+# Redirects pour SPA/SSG (doit être en dernier)
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -19,6 +35,8 @@
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
 
 # Cache pour les assets statiques
 [[headers]]
@@ -27,10 +45,21 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
-# Fonctions Netlify (si nécessaire)
-[functions]
-  directory = "netlify/functions"
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
