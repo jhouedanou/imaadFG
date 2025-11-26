@@ -6,17 +6,7 @@ export default defineNuxtConfig({
     '~/assets/css/nicepage-site.css',
     '~/assets/css/index.css',
     '~/assets/css/fonts.css',
-    '~/assets/css/Accueil-fonts.css',
-    '~/assets/css/Actualites.css',
-    '~/assets/css/Contact.css',
-    '~/assets/css/Nos-activites.css',
-    '~/assets/css/Notre-equipe.css',
-    '~/assets/css/partenariats-public-prive.css',
-    '~/assets/css/capital-risque.css',
-    '~/assets/css/financement-souverain.css',
-    '~/assets/css/pages.css',
-    '~/assets/css/main.css',
-    '~/assets/scss/global.scss'
+    '~/assets/css/Accueil-fonts.css'
   ],
 
   modules: [
