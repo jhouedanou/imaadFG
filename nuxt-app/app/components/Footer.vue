@@ -2,10 +2,10 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-section">
-        <NuxtImg 
-          :src="site.logo" 
-          :alt="site.name" 
-          width="120" 
+        <img
+          :src="site.logo"
+          :alt="site.name"
+          width="120"
           height="48"
           class="footer-logo"
         />
