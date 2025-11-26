@@ -39,10 +39,11 @@
     {
       "id": "blog",
       "label": "Blog",
-      "path": "/blog"
+      "path": "https://www.imaadcapitalpartners.com/blog/blog",
+      "external": true
     }
   ],
-  "languages": ["FR", "EN"],
+  "languages": ["FR", "EN", "PT"],
   "pages": {
     "accueil": {
       "hero": {

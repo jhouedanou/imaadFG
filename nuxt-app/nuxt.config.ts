@@ -2,6 +2,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+
+  // Configuration pour Netlify - génération statique
+  ssr: true,
+  nitro: {
+    preset: 'netlify'
+  },
+
   css: [
     '~/assets/css/nicepage-site.css',
     '~/assets/css/index.css',
@@ -41,6 +48,11 @@ export default defineNuxtConfig({
         code: 'en',
         iso: 'en-US',
         name: 'English'
+      },
+      {
+        code: 'pt',
+        iso: 'pt-PT',
+        name: 'Português'
       }
     ],
     defaultLocale: 'fr',

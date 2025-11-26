@@ -1,0 +1,8 @@
+# Redirects Netlify
+# Les routes dynamiques sont gérées par Nuxt SSR/SSG
+
+# Redirection www vers non-www (optionnel)
+# https://www.imaadfg.com/* https://imaadfg.com/:splat 301!
+
+# Fallback pour SPA
+/*    /index.html   200

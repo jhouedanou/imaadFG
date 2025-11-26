@@ -31,6 +31,21 @@ export default {
         learn_more: 'LEARN MORE',
         contact_us: 'Contact us'
       }
+    },
+    pt: {
+      nav: {
+        accueil: 'Início',
+        actualites: 'Notícias',
+        'nos-activites': 'as nossas actividades',
+        'notre-equipe': 'Equipas',
+        contact: 'contactos',
+        blog: 'Blog'
+      },
+      common: {
+        read_more: 'Consulte Mais informação',
+        learn_more: 'SABER MAIS',
+        contact_us: 'Contate-nos'
+      }
     }
   }
 }
