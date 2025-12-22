@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+
+// Import site data from JSON
+const { pages } = useSiteData()
+
+// Get activities data from JSON
+const activitesData = computed(() => pages['nos-activites'])
 
 useHead({
   title: 'Nos Activités - IMAAD Financial Group',
@@ -10,119 +16,37 @@ useHead({
   ]
 })
 
-// Services/Verticaux
-const services = [
-  {
-    id: 'financement-souverain',
-    number: '01',
-    title: 'Financement Souverain',
-    subtitle: 'Accompagner les États dans leurs ambitions',
-    description: 'Nous accompagnons les États africains dans la mobilisation de financements stratégiques pour leurs projets de développement. Notre expertise couvre l\'ensemble du spectre des instruments financiers disponibles : prêts concessionnels, semi-concessionnels, commerciaux, émissions obligataires et appuis budgétaires.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
-    offerings: [
-      'Mobilisation de financements bilatéraux et multilatéraux',
-      'Structuration de prêts souverains',
-      'Conseil en émission obligataire',
-      'Appuis budgétaires et gestion de la dette',
-      'Relations avec les institutions financières internationales'
-    ],
-    stats: { value: '+800M €', label: 'mobilisés depuis 2020' }
-  },
-  {
-    id: 'corporate-finance',
-    number: '02',
-    title: 'Corporate & Trade Finance',
-    subtitle: 'Accélérer la croissance des entreprises',
-    description: 'Nous accompagnons les entreprises africaines dans leurs besoins de financement structuré. Du CAPEX à l\'OPEX, nous développons des solutions sur mesure pour soutenir les projets d\'investissement et le cycle d\'exploitation des acteurs économiques du continent.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-    offerings: [
-      'Financement de projets industriels',
-      'Trade finance et garanties',
-      'Levée de fonds CAPEX & OPEX',
-      'Financement export',
-      'Solutions de trésorerie structurées'
-    ],
-    stats: { value: '+250M €', label: 'de financements corporate' }
-  },
-  {
-    id: 'ppp',
-    number: '03',
-    title: 'Partenariats Public-Privé',
-    subtitle: 'Construire les infrastructures de demain',
-    description: 'Nous conseillons et accompagnons la structuration de projets PPP pour la réalisation d\'infrastructures essentielles. Notre expertise couvre l\'ensemble du cycle de vie des projets : de l\'étude de faisabilité à la mise en œuvre opérationnelle.',
-    image: 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
-    offerings: [
-      'Conseil en structuration PPP',
-      'Études de faisabilité financière',
-      'Négociation des contrats de concession',
-      'Accompagnement des porteurs de projets',
-      'Coordination des parties prenantes'
-    ],
-    stats: { value: '3 Mds €', label: 'portefeuille de projets' }
-  }
-]
+// Services from JSON
+const services = computed(() => {
+  const servicesList = activitesData.value?.services || []
+  return servicesList.map((service: any, index: number) => ({
+    id: service.id,
+    number: String(index + 1).padStart(2, '0'),
+    title: service.title,
+    subtitle: service.description,
+    description: service.description,
+    image: index === 0 
+      ? 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80'
+      : index === 1 
+        ? 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80'
+        : 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
+    offerings: service.prestations || [],
+    projects: service.projets || []
+  }))
+})
 
-// Projets référence
-const projects = [
-  {
-    title: 'Route Abidjan - San Pedro',
-    location: 'Côte d\'Ivoire',
-    amount: '150 M€',
-    type: 'Infrastructure routière',
-    status: 'Closé 2023',
-    category: 'financement-souverain'
-  },
-  {
-    title: 'Adduction Eau Potable Grand-Abidjan',
-    location: 'Côte d\'Ivoire',
-    amount: '278 M€',
-    type: 'Eau et assainissement',
-    status: 'Closing 2026',
-    category: 'financement-souverain'
-  },
-  {
-    title: '56 Collèges de Base 4',
-    location: 'Côte d\'Ivoire',
-    amount: '137 M€',
-    type: 'Infrastructures éducatives',
-    status: 'Closé 2025',
-    category: 'ppp'
-  },
-  {
-    title: 'Centres de santé Nord',
-    location: 'Côte d\'Ivoire',
-    amount: '89 M€',
-    type: 'Infrastructures de santé',
-    status: 'En cours',
-    category: 'ppp'
-  },
-  {
-    title: 'Financement agroindustriel',
-    location: 'Sénégal',
-    amount: '45 M€',
-    type: 'Agro-industrie',
-    status: 'Closé 2024',
-    category: 'corporate-finance'
-  },
-  {
-    title: 'Terminal portuaire',
-    location: 'Guinée',
-    amount: '120 M€',
-    type: 'Infrastructure portuaire',
-    status: 'En développement',
-    category: 'ppp'
-  }
-]
-
-const activeService = ref(services[0].id)
+const activeService = ref('')
 
 onMounted(async () => {
+  if (services.value.length > 0) {
+    activeService.value = services.value[0].id
+  }
+  
   if (import.meta.client) {
     const { gsap } = await import('gsap')
     const { ScrollTrigger } = await import('gsap/ScrollTrigger')
     gsap.registerPlugin(ScrollTrigger)
     
-    // Service sections animation
     gsap.from('.service-section', {
       opacity: 0,
       y: 60,
@@ -135,7 +59,6 @@ onMounted(async () => {
       }
     })
     
-    // Project cards animation
     gsap.from('.project-card', {
       opacity: 0,
       y: 40,
@@ -166,11 +89,10 @@ onMounted(async () => {
           Expertise
         </span>
         <h1 class="font-playfair text-hero text-white mb-6">
-          Nos Activités
+          {{ activitesData?.hero?.title || 'Nos Activités' }}
         </h1>
         <p class="font-montserrat text-lg text-gray-300 max-w-2xl mx-auto">
-          Trois domaines d'excellence pour accompagner la croissance 
-          durable des États et entreprises africaines.
+          {{ activitesData?.hero?.subtitle || 'Trois domaines d\'excellence pour accompagner la croissance durable des États et entreprises africaines.' }}
         </p>
       </div>
     </section>
@@ -203,27 +125,21 @@ onMounted(async () => {
         :class="index % 2 === 0 ? 'bg-white' : 'bg-ivory'"
       >
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-          <div 
-            class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-            :class="{ 'lg:grid-flow-col-dense': index % 2 === 1 }"
-          >
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <!-- Content -->
-            <div :class="{ 'lg:col-start-2': index % 2 === 1 }">
+            <div>
               <span class="font-playfair text-6xl lg:text-8xl text-or/20 font-light block mb-4">
                 {{ service.number }}
               </span>
               <h2 class="font-playfair text-display text-bleu-nuit mb-2">
                 {{ service.title }}
               </h2>
-              <p class="font-montserrat text-or text-sm uppercase tracking-wider mb-6">
-                {{ service.subtitle }}
-              </p>
               <p class="font-montserrat text-gray-600 leading-relaxed mb-8">
                 {{ service.description }}
               </p>
               
               <!-- Offerings -->
-              <div class="mb-8">
+              <div v-if="service.offerings.length > 0" class="mb-8">
                 <h3 class="font-montserrat text-sm uppercase tracking-wider text-bleu-nuit mb-4">
                   Nos expertises
                 </h3>
@@ -238,23 +154,35 @@ onMounted(async () => {
                   </li>
                 </ul>
               </div>
-              
-              <!-- Stat -->
-              <div class="flex items-center gap-4 p-6 bg-bleu-nuit rounded-xl">
-                <div class="font-playfair text-3xl lg:text-4xl text-or">
-                  {{ service.stats.value }}
-                </div>
-                <div class="font-montserrat text-sm text-gray-300 uppercase tracking-wider">
-                  {{ service.stats.label }}
+
+              <!-- Projects for this service -->
+              <div v-if="service.projects.length > 0" class="mt-8">
+                <h3 class="font-montserrat text-sm uppercase tracking-wider text-bleu-nuit mb-4">
+                  Projets de référence
+                </h3>
+                <div class="grid gap-4">
+                  <div 
+                    v-for="project in service.projects.slice(0, 3)" 
+                    :key="project.nom"
+                    class="bg-gray-50 rounded-lg p-4 border border-gray-100"
+                  >
+                    <div class="flex justify-between items-start mb-2">
+                      <h4 class="font-montserrat font-semibold text-bleu-nuit">{{ project.nom }}</h4>
+                      <span class="font-montserrat text-sm text-or font-semibold">{{ project.montant }}</span>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm text-gray-500">
+                      <span>{{ project.pays }}</span>
+                      <span class="px-2 py-0.5 rounded-full text-xs" :class="project.statut?.includes('Closé') ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'">
+                        {{ project.statut }}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             
             <!-- Image -->
-            <div 
-              class="relative"
-              :class="{ 'lg:col-start-1 lg:row-start-1': index % 2 === 1 }"
-            >
+            <div class="relative">
               <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
                 <img 
                   :src="service.image" 
@@ -262,110 +190,40 @@ onMounted(async () => {
                   class="w-full h-full object-cover"
                 />
               </div>
-              <!-- Decorative elements -->
-              <div 
-                class="absolute -z-10 w-32 h-32 border-2 border-or rounded-xl"
-                :class="index % 2 === 0 ? '-bottom-6 -right-6' : '-bottom-6 -left-6'"
-              />
+              <div class="absolute -z-10 w-32 h-32 border-2 border-or rounded-xl -bottom-6 -right-6" />
             </div>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- Projects Section -->
-    <section class="py-20 lg:py-32 bg-bleu-nuit">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <span class="font-montserrat text-or text-sm uppercase tracking-widest mb-4 block">
-            Références
-          </span>
-          <h2 class="font-playfair text-display text-white mb-4">
-            Nos Projets
-          </h2>
-          <p class="font-montserrat text-gray-400 max-w-2xl mx-auto">
-            Une sélection de projets structurants que nous avons accompagnés
-          </p>
-        </div>
-        
-        <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div 
-            v-for="project in projects" 
-            :key="project.title"
-            class="project-card bg-bleu-nuit-light rounded-xl p-6 border border-white/10 hover:border-or/50 transition-all duration-300 group"
-          >
-            <div class="flex justify-between items-start mb-4">
-              <span class="font-montserrat text-xs text-or uppercase tracking-wider">
-                {{ project.type }}
-              </span>
-              <span 
-                class="font-montserrat text-xs px-3 py-1 rounded-full"
-                :class="project.status.includes('Closé') ? 'bg-green-500/20 text-green-400' : 'bg-or/20 text-or'"
-              >
-                {{ project.status }}
-              </span>
-            </div>
-            
-            <h3 class="font-playfair text-xl text-white mb-2 group-hover:text-or transition-colors duration-300">
-              {{ project.title }}
-            </h3>
-            
-            <div class="flex items-center gap-2 mb-4">
-              <Icon name="mdi:map-marker" class="w-4 h-4 text-gray-400" />
-              <span class="font-montserrat text-sm text-gray-400">{{ project.location }}</span>
-            </div>
-            
-            <div class="font-playfair text-2xl text-or">
-              {{ project.amount }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Process Section -->
-    <section class="py-20 lg:py-32 bg-white">
+    <section class="py-20 lg:py-32 bg-bleu-nuit">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16">
           <span class="font-montserrat text-or text-sm uppercase tracking-widest mb-4 block">
             Méthodologie
           </span>
-          <h2 class="font-playfair text-display text-bleu-nuit">
-            Notre Approche
+          <h2 class="font-playfair text-display text-white">
+            {{ activitesData?.modele?.title || 'Notre Modèle' }}
           </h2>
+          <p class="font-montserrat text-gray-400 max-w-2xl mx-auto mt-4">
+            {{ activitesData?.modele?.description || '' }}
+          </p>
         </div>
         
-        <div class="grid md:grid-cols-4 gap-8">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-or/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="font-playfair text-2xl text-or">1</span>
+        <!-- Approach items from JSON -->
+        <div v-if="activitesData?.approche?.items" class="grid md:grid-cols-3 gap-8">
+          <div 
+            v-for="item in activitesData.approche.items" 
+            :key="item.title"
+            class="text-center bg-white/5 backdrop-blur rounded-xl p-8"
+          >
+            <div class="w-20 h-20 bg-or/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <img :src="item.image" :alt="item.title" class="w-12 h-12 object-contain" />
             </div>
-            <h3 class="font-playfair text-lg text-bleu-nuit mb-2">Diagnostic</h3>
-            <p class="font-montserrat text-sm text-gray-600">Analyse approfondie des besoins et du contexte du projet</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-or/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="font-playfair text-2xl text-or">2</span>
-            </div>
-            <h3 class="font-playfair text-lg text-bleu-nuit mb-2">Structuration</h3>
-            <p class="font-montserrat text-sm text-gray-600">Conception de la solution financière optimale</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-or/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="font-playfair text-2xl text-or">3</span>
-            </div>
-            <h3 class="font-playfair text-lg text-bleu-nuit mb-2">Mobilisation</h3>
-            <p class="font-montserrat text-sm text-gray-600">Négociation et closing avec les partenaires financiers</p>
-          </div>
-          
-          <div class="text-center">
-            <div class="w-16 h-16 bg-or/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="font-playfair text-2xl text-or">4</span>
-            </div>
-            <h3 class="font-playfair text-lg text-bleu-nuit mb-2">Suivi</h3>
-            <p class="font-montserrat text-sm text-gray-600">Accompagnement jusqu'à la réalisation du projet</p>
+            <h3 class="font-playfair text-xl text-white mb-2">{{ item.title }}</h3>
+            <p class="font-montserrat text-sm text-or">{{ item.subtitle }}</p>
           </div>
         </div>
       </div>

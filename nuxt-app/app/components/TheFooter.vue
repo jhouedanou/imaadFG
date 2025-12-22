@@ -1,18 +1,29 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
+// Import site data
+const { site, navigation, pages } = useSiteData()
+
 const currentYear = new Date().getFullYear()
 
-const footerLinks = {
-  services: [
+// Build footer links from JSON data
+const footerLinks = computed(() => ({
+  services: pages['nos-activites']?.modele?.leviers?.map(levier => ({
+    label: levier.title,
+    to: `/nos-activites#${levier.id}`
+  })) || [
     { label: 'Financement Souverain', to: '/nos-activites#financement-souverain' },
     { label: 'Corporate & Trade Finance', to: '/nos-activites#corporate-finance' },
     { label: 'Partenariats Public-Privé', to: '/nos-activites#ppp' },
   ],
-  company: [
-    { label: 'Notre Équipe', to: '/notre-equipe' },
-    { label: 'Actualités', to: '/actualites' },
-    { label: 'Contact', to: '/contact' },
-  ],
-}
+  company: navigation
+    .filter(item => !item.external && item.path !== '/')
+    .slice(0, 3)
+    .map(item => ({
+      label: item.label,
+      to: item.path
+    }))
+}))
 
 const socialLinks = [
   { icon: 'linkedin', url: 'https://linkedin.com/company/imaad-financial-group' },
@@ -29,13 +40,13 @@ const socialLinks = [
         <div class="lg:col-span-1">
           <NuxtLink to="/" class="inline-block mb-6">
             <img 
-              src="/images/logo-removebg-preview.png" 
-              alt="IMAAD Financial Group" 
+              :src="site.logo || '/images/logo-removebg-preview.png'" 
+              :alt="site.name || 'IMAAD Financial Group'" 
               class="h-16 w-auto brightness-0 invert"
             />
           </NuxtLink>
           <p class="font-montserrat text-sm text-gray-400 leading-relaxed mb-6">
-            Catalyseur de la Souveraineté et de la Croissance Durable en Afrique et au-delà.
+            {{ site.tagline || 'Catalyseur de la Souveraineté et de la Croissance Durable en Afrique et au-delà.' }}
           </p>
           <!-- Social Links -->
           <div class="flex gap-4">
@@ -91,13 +102,13 @@ const socialLinks = [
               Cocody Riviera Palmeraie
             </p>
             <p>
-              <a href="mailto:contact@imaadfg.com" class="hover:text-or transition-colors duration-300">
-                contact@imaadfg.com
+              <a :href="`mailto:${site.contact?.email || 'contact@imaadfg.com'}`" class="hover:text-or transition-colors duration-300">
+                {{ site.contact?.email || 'contact@imaadfg.com' }}
               </a>
             </p>
             <p>
-              <a href="tel:+22507881221" class="hover:text-or transition-colors duration-300">
-                +225 07 88 12 21 21
+              <a :href="`tel:${site.contact?.phone?.replace(/[^0-9+]/g, '') || '+22507881221'}`" class="hover:text-or transition-colors duration-300">
+                {{ site.contact?.phone || '+225 07 88 12 21 21' }}
               </a>
             </p>
           </address>

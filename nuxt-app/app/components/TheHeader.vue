@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+
+// Import site data
+const { site, navigation } = useSiteData()
 
 const isScrolled = ref(false)
 const isVisible = ref(true)
@@ -7,13 +10,15 @@ const isMobileMenuOpen = ref(false)
 const headerRef = ref<HTMLElement | null>(null)
 const lastScrollY = ref(0)
 
-const navItems = [
-  { label: 'Accueil', to: '/' },
-  { label: 'Nos Activités', to: '/nos-activites' },
-  { label: 'Notre Équipe', to: '/notre-equipe' },
-  { label: 'Actualités', to: '/actualites' },
-  { label: 'Contact', to: '/contact' },
-]
+// Use navigation from JSON data, filter out external links for main nav
+const navItems = computed(() => 
+  navigation
+    .filter(item => !item.external)
+    .map(item => ({
+      label: item.label,
+      to: item.path
+    }))
+)
 
 const handleScroll = () => {
   const currentScrollY = window.scrollY

@@ -1,47 +1,73 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
-// SEO
+// Import site data from JSON
+const { site, pages } = useSiteData()
+const homeData = computed(() => pages.accueil)
+
+// SEO - use data from JSON
 useHead({
-  title: 'IMAAD Financial Group - Catalyseur de la Souveraineté et de la Croissance Durable',
+  title: `${site.name} - ${site.tagline}`,
   meta: [
-    { name: 'description', content: 'IMAAD Financial Group accompagne les États et entreprises africaines dans leurs besoins de financement souverain, corporate finance et partenariats public-privé.' },
-    { property: 'og:title', content: 'IMAAD Financial Group' },
-    { property: 'og:description', content: 'Catalyseur de la Souveraineté et de la Croissance Durable' },
+    { name: 'description', content: homeData.value?.presentation?.description || 'IMAAD Financial Group accompagne les États et entreprises africaines dans leurs besoins de financement souverain, corporate finance et partenariats public-privé.' },
+    { property: 'og:title', content: site.name },
+    { property: 'og:description', content: site.tagline },
     { property: 'og:type', content: 'website' },
     { name: 'theme-color', content: '#0B1E3B' }
   ]
 })
 
-// Verticaux data
-const verticaux = [
-  {
-    title: 'Financement Souverain',
-    description: 'Accompagnement des États dans la mobilisation de financements concessionnels, semi-concessionnels et commerciaux. Appuis budgétaires et restructuration de dette publique.',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
-    link: '/nos-activites#financement-souverain'
-  },
-  {
-    title: 'Corporate & Trade Finance',
-    description: 'Mobilisation de fonds CAPEX & OPEX pour les entreprises. Financement structuré et accompagnement des projets industriels et logistiques.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-    link: '/nos-activites#corporate-finance'
-  },
-  {
-    title: 'Partenariats Public-Privé',
-    description: 'Conseil et développement de projets PPP. Structuration financière de grands projets d\'infrastructures urbaines et régionales.',
-    image: 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
-    link: '/nos-activites#ppp'
+// Verticaux data from JSON (nos-activites leviers)
+const verticaux = computed(() => {
+  const leviers = pages['nos-activites']?.modele?.leviers
+  if (leviers && leviers.length > 0) {
+    return leviers.map(levier => ({
+      title: levier.title,
+      description: levier.description,
+      image: levier.icon || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
+      link: `/nos-activites#${levier.id}`
+    }))
   }
-]
+  // Fallback
+  return [
+    {
+      title: 'Financement Souverain',
+      description: 'Accompagnement des États dans la mobilisation de financements concessionnels, semi-concessionnels et commerciaux.',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
+      link: '/nos-activites#financement-souverain'
+    },
+    {
+      title: 'Corporate & Trade Finance',
+      description: 'Mobilisation de fonds CAPEX & OPEX pour les entreprises. Financement structuré.',
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+      link: '/nos-activites#corporate-finance'
+    },
+    {
+      title: 'Partenariats Public-Privé',
+      description: 'Conseil et développement de projets PPP. Structuration financière de grands projets.',
+      image: 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
+      link: '/nos-activites#ppp'
+    }
+  ]
+})
 
-// Stats
-const stats = [
-  { value: '+1 Md €', label: 'mobilisés depuis 2020' },
-  { value: '+20', label: 'projets finalisés' },
-  { value: '15', label: 'pays couverts' },
-  { value: '3 Mds €', label: 'portefeuille projets' }
-]
+// Stats from JSON
+const stats = computed(() => {
+  const impactStats = homeData.value?.impact?.stats
+  if (impactStats && impactStats.length > 0) {
+    return impactStats.map(stat => ({
+      value: stat.value,
+      label: stat.label
+    }))
+  }
+  // Fallback
+  return [
+    { value: '+1 Md €', label: 'mobilisés depuis 2020' },
+    { value: '+20', label: 'projets finalisés' },
+    { value: '15', label: 'pays couverts' },
+    { value: '3 Mds €', label: 'portefeuille projets' }
+  ]
+})
 
 // Hero animation
 const heroRef = ref<HTMLElement | null>(null)
@@ -108,7 +134,7 @@ onMounted(async () => {
       <!-- Background -->
       <div 
         class="hero-bg absolute inset-0 bg-cover bg-center"
-        style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80')"
+        :style="`background-image: url('${homeData?.hero?.backgroundImage || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80'}')`"
       />
       
       <!-- Overlay -->
@@ -128,8 +154,7 @@ onMounted(async () => {
           ref="subtitleRef"
           class="font-montserrat text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-12"
         >
-          IMAAD Financial Group accompagne les États et entreprises dans leurs projets 
-          d'infrastructures et de développement à fort impact économique et social.
+          {{ homeData?.presentation?.description || 'IMAAD Financial Group accompagne les États et entreprises dans leurs projets d\'infrastructures et de développement à fort impact économique et social.' }}
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
