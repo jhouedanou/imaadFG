@@ -2,8 +2,10 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const isScrolled = ref(false)
+const isVisible = ref(true)
 const isMobileMenuOpen = ref(false)
 const headerRef = ref<HTMLElement | null>(null)
+const lastScrollY = ref(0)
 
 const navItems = [
   { label: 'Accueil', to: '/' },
@@ -14,11 +16,27 @@ const navItems = [
 ]
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50
+  const currentScrollY = window.scrollY
+
+  // Détermine si on a scrollé
+  isScrolled.value = currentScrollY > 50
+
+  // Détermine la direction du scroll
+  if (currentScrollY < lastScrollY.value || currentScrollY < 100) {
+    // Scrolling vers le haut ou en haut de la page
+    isVisible.value = true
+  } else if (currentScrollY > lastScrollY.value && currentScrollY > 100) {
+    // Scrolling vers le bas et pas en haut de la page
+    isVisible.value = false
+    // Ferme le menu mobile si ouvert
+    isMobileMenuOpen.value = false
+  }
+
+  lastScrollY.value = currentScrollY
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  window.addEventListener('scroll', handleScroll, { passive: true })
   handleScroll()
 })
 
@@ -36,13 +54,14 @@ const closeMobileMenu = () => {
 </script>
 
 <template>
-  <header 
+  <header
     ref="headerRef"
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    class="fixed left-0 right-0 z-50 transition-all duration-500"
     :class="[
-      isScrolled 
-        ? 'bg-petrol backdrop-blur-md shadow-lg py-3 border-b border-or/30' 
-        : 'bg-transparent py-6'
+      isScrolled
+        ? 'bg-petrol backdrop-blur-md shadow-lg py-3 border-b border-or/30'
+        : 'bg-transparent py-6',
+      isVisible ? 'top-0' : '-top-32'
     ]"
   >
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
