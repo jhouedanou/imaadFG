@@ -375,6 +375,160 @@
           </div>
         </div>
 
+        <!-- Unsplash Images -->
+        <div v-if="activeTab === 'unsplash'" class="space-y-6">
+          <h2 class="text-2xl font-michroma text-white mb-6">Images Unsplash</h2>
+          <p class="text-gray-400 mb-6">Gérez les images Unsplash utilisées sur le site. Collez l'URL complète de l'image Unsplash.</p>
+          
+          <!-- Hero Image -->
+          <div class="bg-[#050b16] border border-gray-800 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-[#C9A227] mb-4">Image Hero (Page d'accueil)</h3>
+            <div class="grid md:grid-cols-2 gap-6 items-start">
+              <div>
+                <AdminInput 
+                  v-model="siteData.images.hero" 
+                  label="URL de l'image Hero" 
+                  placeholder="https://images.unsplash.com/..."
+                  @change="markChanged"
+                />
+                <p class="text-gray-500 text-xs mt-2">Image de fond du header principal sur la page d'accueil</p>
+              </div>
+              <div class="aspect-video bg-[#0A192F] rounded-lg overflow-hidden border border-gray-700">
+                <img 
+                  v-if="siteData.images?.hero" 
+                  :src="siteData.images.hero" 
+                  alt="Hero preview" 
+                  class="w-full h-full object-cover"
+                />
+                <div v-else class="w-full h-full flex items-center justify-center text-gray-500">
+                  Aucune image
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Verticaux Images -->
+          <div class="bg-[#050b16] border border-gray-800 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-[#C9A227] mb-4">Images des 3 Verticaux</h3>
+            <div class="space-y-6">
+              <!-- Financement Souverain -->
+              <div class="grid md:grid-cols-2 gap-6 items-start pb-6 border-b border-gray-800">
+                <div>
+                  <AdminInput 
+                    v-model="siteData.images.verticaux.financementSouverain" 
+                    label="Financement Souverain" 
+                    placeholder="https://images.unsplash.com/..."
+                    @change="markChanged"
+                  />
+                </div>
+                <div class="aspect-video bg-[#0A192F] rounded-lg overflow-hidden border border-gray-700">
+                  <img 
+                    v-if="siteData.images?.verticaux?.financementSouverain" 
+                    :src="siteData.images.verticaux.financementSouverain" 
+                    alt="Financement Souverain preview" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              <!-- Corporate Finance -->
+              <div class="grid md:grid-cols-2 gap-6 items-start pb-6 border-b border-gray-800">
+                <div>
+                  <AdminInput 
+                    v-model="siteData.images.verticaux.corporateFinance" 
+                    label="Corporate & Trade Finance" 
+                    placeholder="https://images.unsplash.com/..."
+                    @change="markChanged"
+                  />
+                </div>
+                <div class="aspect-video bg-[#0A192F] rounded-lg overflow-hidden border border-gray-700">
+                  <img 
+                    v-if="siteData.images?.verticaux?.corporateFinance" 
+                    :src="siteData.images.verticaux.corporateFinance" 
+                    alt="Corporate Finance preview" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              <!-- PPP -->
+              <div class="grid md:grid-cols-2 gap-6 items-start">
+                <div>
+                  <AdminInput 
+                    v-model="siteData.images.verticaux.ppp" 
+                    label="Partenariats Public-Privé" 
+                    placeholder="https://images.unsplash.com/..."
+                    @change="markChanged"
+                  />
+                </div>
+                <div class="aspect-video bg-[#0A192F] rounded-lg overflow-hidden border border-gray-700">
+                  <img 
+                    v-if="siteData.images?.verticaux?.ppp" 
+                    :src="siteData.images.verticaux.ppp" 
+                    alt="PPP preview" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Activités Images -->
+          <div class="bg-[#050b16] border border-gray-800 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-[#C9A227] mb-4">Page Nos Activités</h3>
+            <div class="space-y-6">
+              <div class="grid md:grid-cols-2 gap-6 items-start pb-6 border-b border-gray-800">
+                <div>
+                  <AdminInput 
+                    v-model="siteData.images.activites.hero" 
+                    label="Image Hero (Page Activités)" 
+                    placeholder="https://images.unsplash.com/..."
+                    @change="markChanged"
+                  />
+                </div>
+                <div class="aspect-video bg-[#0A192F] rounded-lg overflow-hidden border border-gray-700">
+                  <img 
+                    v-if="siteData.images?.activites?.hero" 
+                    :src="siteData.images.activites.hero" 
+                    alt="Activites Hero preview" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6 items-start">
+                <div>
+                  <AdminInput 
+                    v-model="siteData.images.activites.cta" 
+                    label="Image CTA (Section Contact)" 
+                    placeholder="https://images.unsplash.com/..."
+                    @change="markChanged"
+                  />
+                </div>
+                <div class="aspect-video bg-[#0A192F] rounded-lg overflow-hidden border border-gray-700">
+                  <img 
+                    v-if="siteData.images?.activites?.cta" 
+                    :src="siteData.images.activites.cta" 
+                    alt="CTA preview" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unsplash Tips -->
+          <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4">
+            <h4 class="text-blue-400 font-semibold mb-2">💡 Comment trouver une image Unsplash</h4>
+            <ol class="text-gray-400 text-sm space-y-1 list-decimal list-inside">
+              <li>Allez sur <a href="https://unsplash.com" target="_blank" class="text-[#C9A227] hover:underline">unsplash.com</a></li>
+              <li>Recherchez une image (ex: "skyscraper", "finance", "business")</li>
+              <li>Cliquez sur l'image pour l'ouvrir</li>
+              <li>Clic droit sur l'image → "Copier l'adresse de l'image"</li>
+              <li>Collez l'URL ici (elle doit commencer par https://images.unsplash.com/)</li>
+            </ol>
+          </div>
+        </div>
+
         <!-- Images -->
         <div v-if="activeTab === 'images'" class="space-y-6">
           <h2 class="text-2xl font-michroma text-white mb-6">Galerie d'Images</h2>
@@ -517,8 +671,9 @@ const tabs = [
   { id: 'site', label: 'Site' },
   { id: 'accueil', label: 'Accueil' },
   { id: 'activites', label: 'Nos Activités' },
+  { id: 'unsplash', label: 'Images Unsplash' },
   { id: 'navigation', label: 'Navigation' },
-  { id: 'images', label: 'Images' },
+  { id: 'images', label: 'Galerie' },
   { id: 'json', label: 'Éditeur JSON' }
 ]
 
