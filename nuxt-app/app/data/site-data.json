@@ -9,6 +9,18 @@
       "phone": "(+221) 772457987"
     }
   },
+  "images": {
+    "hero": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+    "verticaux": {
+      "financementSouverain": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+      "corporateFinance": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
+      "ppp": "https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80"
+    },
+    "activites": {
+      "hero": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+      "cta": "https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1920&q=80"
+    }
+  },
   "navigation": [
     {
       "id": "accueil",
@@ -53,7 +65,7 @@
       "hero": {
         "title": "IMAAD FINANCIAL GROUP",
         "subtitle": "Catalyseur de la Souveraineté et de la Croissance Durable",
-        "backgroundImage": "/images/bg.webp"
+        "backgroundImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
       },
       "presentation": {
         "title": "Notre Essence",
