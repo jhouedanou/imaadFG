@@ -1,4 +1,17 @@
+import { verifyAdminToken } from '../../utils/auth'
+
 export default defineEventHandler(async (event) => {
+  // Check authentication
+  const token = getCookie(event, 'admin_token')
+  const authResult = verifyAdminToken(token || '')
+  
+  if (!authResult.valid) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Non autorisé'
+    })
+  }
+
   const body = await readBody(event)
   
   try {
