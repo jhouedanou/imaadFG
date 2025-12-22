@@ -1,227 +1,304 @@
+<template>
+  <div class="min-h-screen bg-[#050b16]">
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 md:px-8 overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: repeating-linear-gradient(90deg, #C9A227 0px, #C9A227 1px, transparent 1px, transparent 80px), repeating-linear-gradient(0deg, #C9A227 0px, #C9A227 1px, transparent 1px, transparent 80px);"></div>
+      </div>
+      
+      <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm mb-8">
+          <NuxtLink to="/" class="text-gray-400 hover:text-[#C9A227] transition-colors">Accueil</NuxtLink>
+          <span class="text-gray-600">/</span>
+          <span class="text-[#C9A227]">Notre Équipe</span>
+        </div>
+
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          <div>
+            <div class="inline-flex items-center gap-3 mb-6">
+              <div class="w-12 h-[2px] bg-[#C9A227]"></div>
+              <span class="text-[#C9A227] font-michroma text-sm tracking-[0.3em] uppercase">L'équipe</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-michroma font-bold text-white mb-6 leading-tight">
+              Notre <span class="text-[#C9A227]">Équipe</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-2xl leading-relaxed">
+              Des experts reconnus en financement souverain, structuration de projets et partenariats stratégiques.
+            </p>
+          </div>
+          
+          <!-- Stats -->
+          <div class="flex gap-8">
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-michroma font-bold text-[#C9A227] mb-2">30+</div>
+              <div class="text-sm text-gray-400 uppercase tracking-wider">Années d'expérience</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-michroma font-bold text-[#C9A227] mb-2">3</div>
+              <div class="text-sm text-gray-400 uppercase tracking-wider">Continents</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Members Grid -->
+    <section class="py-20 px-4 md:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Member 1: Pierre WOLF -->
+          <div class="group team-card" ref="teamCard1">
+            <div class="relative bg-[#0A192F] border border-gray-800 rounded-lg overflow-hidden hover:border-[#C9A227]/50 transition-all duration-500">
+              <!-- Photo placeholder avec initiales -->
+              <div class="relative h-80 bg-gradient-to-br from-[#0A192F] to-[#1a2f4a] flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                  <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, #C9A227 0px, #C9A227 1px, transparent 1px, transparent 20px);"></div>
+                </div>
+                <div class="w-36 h-36 rounded-full bg-gradient-to-br from-[#C9A227] to-[#a8861f] flex items-center justify-center text-[#0A192F] text-5xl font-michroma font-bold shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                  PW
+                </div>
+                <!-- Hover overlay -->
+                <div class="absolute inset-0 bg-[#C9A227]/0 group-hover:bg-[#C9A227]/10 transition-all duration-500"></div>
+              </div>
+              
+              <!-- Content -->
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-[2px] bg-[#C9A227]"></div>
+                  <span class="text-[#C9A227] text-xs font-semibold uppercase tracking-wider">Président</span>
+                </div>
+                <h3 class="text-2xl font-michroma font-bold text-white mb-4">Pierre WOLF</h3>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                  Expert reconnu en financement souverain et partenariats public-privé avec plus de 30 ans d'expérience en finance internationale.
+                </p>
+                <div class="flex items-center gap-4">
+                  <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-all">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </a>
+                  <a href="mailto:contact@imaadcapitalpartners.com" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 2: Issa Mehmet N'DIAYE -->
+          <div class="group team-card" ref="teamCard2">
+            <div class="relative bg-[#0A192F] border border-gray-800 rounded-lg overflow-hidden hover:border-[#C9A227]/50 transition-all duration-500">
+              <!-- Photo placeholder avec initiales -->
+              <div class="relative h-80 bg-gradient-to-br from-[#0A192F] to-[#1a2f4a] flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                  <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, #C9A227 0px, #C9A227 1px, transparent 1px, transparent 20px);"></div>
+                </div>
+                <div class="w-36 h-36 rounded-full bg-gradient-to-br from-[#C9A227] to-[#a8861f] flex items-center justify-center text-[#0A192F] text-4xl font-michroma font-bold shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                  IMN
+                </div>
+                <!-- Hover overlay -->
+                <div class="absolute inset-0 bg-[#C9A227]/0 group-hover:bg-[#C9A227]/10 transition-all duration-500"></div>
+              </div>
+              
+              <!-- Content -->
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-[2px] bg-[#C9A227]"></div>
+                  <span class="text-[#C9A227] text-xs font-semibold uppercase tracking-wider">Directeur Général</span>
+                </div>
+                <h3 class="text-2xl font-michroma font-bold text-white mb-4">Issa Mehmet N'DIAYE</h3>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                  Spécialiste du financement de projets et des structures de transaction complexes en Afrique de l'Ouest.
+                </p>
+                <div class="flex items-center gap-4">
+                  <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-all">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </a>
+                  <a href="mailto:contact@imaadcapitalpartners.com" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 3: Rym MOULAYE-IDRISS -->
+          <div class="group team-card" ref="teamCard3">
+            <div class="relative bg-[#0A192F] border border-gray-800 rounded-lg overflow-hidden hover:border-[#C9A227]/50 transition-all duration-500">
+              <!-- Photo placeholder avec initiales -->
+              <div class="relative h-80 bg-gradient-to-br from-[#0A192F] to-[#1a2f4a] flex items-center justify-center overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                  <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, #C9A227 0px, #C9A227 1px, transparent 1px, transparent 20px);"></div>
+                </div>
+                <div class="w-36 h-36 rounded-full bg-gradient-to-br from-[#C9A227] to-[#a8861f] flex items-center justify-center text-[#0A192F] text-5xl font-michroma font-bold shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                  RM
+                </div>
+                <!-- Hover overlay -->
+                <div class="absolute inset-0 bg-[#C9A227]/0 group-hover:bg-[#C9A227]/10 transition-all duration-500"></div>
+              </div>
+              
+              <!-- Content -->
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-[2px] bg-[#C9A227]"></div>
+                  <span class="text-[#C9A227] text-xs font-semibold uppercase tracking-wider">Directrice des Partenariats</span>
+                </div>
+                <h3 class="text-2xl font-michroma font-bold text-white mb-4">Rym MOULAYE-IDRISS</h3>
+                <p class="text-gray-300 leading-relaxed mb-6">
+                  Experte en partenariats public-privé et en structuration des projets d'infrastructure à grande échelle.
+                </p>
+                <div class="flex items-center gap-4">
+                  <a href="#" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-all">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </a>
+                  <a href="mailto:contact@imaadcapitalpartners.com" class="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] hover:bg-[#C9A227]/10 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="py-24 px-4 md:px-8 relative overflow-hidden">
+      <!-- Background -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#050b16] via-[#0A192F] to-[#050b16]"></div>
+      
+      <div class="max-w-5xl mx-auto relative z-10">
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <div class="w-12 h-[2px] bg-[#C9A227]"></div>
+            <span class="text-[#C9A227] font-michroma text-sm tracking-[0.3em] uppercase">Nos Valeurs</span>
+            <div class="w-12 h-[2px] bg-[#C9A227]"></div>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-michroma font-bold text-white mb-8">Notre Philosophie</h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            IMAAD Financial Group est fondée sur les principes d'excellence, d'intégrité et d'impact durable.
+          </p>
+        </div>
+        
+        <!-- Values Grid -->
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-[#0A192F]/50 backdrop-blur-sm border border-gray-800 rounded-lg p-8 text-center hover:border-[#C9A227]/30 transition-all duration-500">
+            <div class="w-16 h-16 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-[#C9A227]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-michroma font-bold text-white mb-4">Excellence</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Nous visons l'excellence dans chaque projet, chaque transaction et chaque relation client.
+            </p>
+          </div>
+          
+          <div class="bg-[#0A192F]/50 backdrop-blur-sm border border-gray-800 rounded-lg p-8 text-center hover:border-[#C9A227]/30 transition-all duration-500">
+            <div class="w-16 h-16 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-[#C9A227]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-michroma font-bold text-white mb-4">Intégrité</h3>
+            <p class="text-gray-400 leading-relaxed">
+              La transparence et l'éthique guident toutes nos actions et décisions stratégiques.
+            </p>
+          </div>
+          
+          <div class="bg-[#0A192F]/50 backdrop-blur-sm border border-gray-800 rounded-lg p-8 text-center hover:border-[#C9A227]/30 transition-all duration-500">
+            <div class="w-16 h-16 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-[#C9A227]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-michroma font-bold text-white mb-4">Impact Durable</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Créer des solutions qui catalysent la croissance économique durable en Afrique.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 md:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-gradient-to-r from-[#0A192F] to-[#0d2240] border border-gray-800 rounded-2xl p-12 text-center relative overflow-hidden">
+          <!-- Decorative elements -->
+          <div class="absolute top-0 right-0 w-64 h-64 bg-[#C9A227]/5 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-[#C9A227]/5 rounded-full blur-3xl"></div>
+          
+          <div class="relative z-10">
+            <h2 class="text-3xl md:text-4xl font-michroma font-bold text-white mb-6">
+              Travaillons <span class="text-[#C9A227]">Ensemble</span>
+            </h2>
+            <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+              Notre équipe est prête à vous accompagner dans vos projets de financement et de développement stratégique.
+            </p>
+            <NuxtLink 
+              to="/contact" 
+              class="inline-flex items-center gap-3 bg-[#C9A227] text-[#0A192F] px-8 py-4 font-michroma font-bold text-sm uppercase tracking-wider hover:bg-[#d4af37] transition-all duration-300 group"
+            >
+              Contactez-nous
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
+const teamCard1 = ref<HTMLElement | null>(null)
+const teamCard2 = ref<HTMLElement | null>(null)
+const teamCard3 = ref<HTMLElement | null>(null)
+
 useHead({
-  title: 'Notre-equipe',
+  title: 'Notre Équipe - IMAAD Financial Group',
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
-    { charset: 'utf-8' },
-    { name: 'keywords', content: 'About Us' },
-    { name: 'description', content: '' },
-    { name: 'theme-color', content: '#1d6df0' },
-    { property: 'og:title', content: 'Notre-equipe' },
-    { property: 'og:description', content: '' },
-    { property: 'og:type', content: 'website' }
-  ],
-  link: [
-    { rel: 'icon', href: '/images/logo-removebg-preview.png' },
-    { rel: 'stylesheet', href: 'https://capp.nicepage.com/cf7c9c13fc8a2049173f22a983fde2065a619052/nicepage.css', media: 'screen' }
-  ],
-  script: [
-    { src: 'https://capp.nicepage.com/assets/jquery-3.5.1.min.js', defer: true },
-    { src: 'https://capp.nicepage.com/cf7c9c13fc8a2049173f22a983fde2065a619052/nicepage.js', defer: true }
-  ],
-  bodyAttrs: {
-    class: 'u-body u-overlap u-xl-mode',
-    'data-lang': 'fr'
-  }
+    {
+      name: 'description',
+      content: 'Rencontrez notre équipe d\'experts en financement, partenariats publics-privés et développement économique.'
+    }
+  ]
+})
+
+onMounted(async () => {
+  const { gsap } = await import('gsap')
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+  gsap.registerPlugin(ScrollTrigger)
+  
+  // Animate team cards on scroll
+  const cards = [teamCard1.value, teamCard2.value, teamCard3.value].filter(Boolean)
+  
+  cards.forEach((card, index) => {
+    gsap.fromTo(card,
+      { opacity: 0, y: 60 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      }
+    )
+  })
 })
 </script>
 
-<template>
-<header class="u-align-center-sm u-align-center-xs u-clearfix u-custom-color-6 u-header u-sticky u-sticky-a04e u-header" id="sec-2427"><div class="u-clearfix u-sheet u-sheet-1">
-        <nav class="Menudepage u-align-center u-menu u-menu-one-level u-offcanvas u-menu-1" data-responsive-from="MD" role="navigation">
-          <div class="menu-collapse" style="font-size: 1rem; font-weight: 300;">
-            <a class="u-button-style u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-file-icon u-hamburger-link u-nav-link u-text-grey-5 u-file-icon-1" href="Notre-equipe.html#" data-lang-en="{&quot;content&quot;:&quot;<img src=\&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAEAUlEQVR4Xu2csaoTURRFb8IEJMhNGsFvsFEsLPwJC0E/xEaw9G8UxNLG0tJea20URJIIVo+RlM8id/a778w7OWe91j1nzt57eZMUM4vCX+oEFqndY74AQHIIAAAAkieQ3D4nAAAkTyC5fU4AAEieQHL7nAAAkDyB5PY5AQAgeQLJ7XMCAEDyBJLb5wQAgOQJJLfPCQAAyRNIbp8TAACSJ5DcPicAACRPILl9TgAAaCew2+0eLZfL1+M4Pi6l3G5fgeIGEziUUj6WUl7WWr+29mieAIfD4d44jp9LKbdaw/h3Vwn8Hobh/nq9/nZqqyYA+/3+fSnliStrLDM1gbe11me9APwspdyZekd0rhLY11o3AOCqk1mX2dVat70A8BEwa2fXd7NxHN9sNpvnXQDwJfD6Cpl50q9hGB6s1+vvXQAcL+Zn4MzV9d1uP47jh9Vq9aJV/vE2zV8BfbtwtfcEAMB7Q8b7AYBxwN7HA4D3hoz3AwDjgL2PBwDvDRnvBwDGAXsfDwDeGzLeDwCMA/Y+HgC8N2S8HwAYB+x9PAB4b8h4PwAwDtj7eADw3pDxfgBgHLD38QDgvSHj/QDAOGDv4wHAe0PG+wGAccDexwOA94aM9wMA44C9jwcA7w0Z7wcAxgF7Hw8A3hsy3g8AjAP2Ph4AvDdkvB8AGAfsfTwAeG/IeL9JAPBwqHELl8f/WSwWny4uLl5tt9vjq3lM/5oA8Hi4af6nhv8tpTystX6x3KAJAO8Isoy/OftdrfVpU9UhmAIA7wjqCLjz0h+11rudM05eDgCW6fbPdgEA7wjqL/KqE27+I4AvgVftrvs6H18Cjzb4GdhdpjLA189AZXO055dA80vg+VliYyUBAFDSCqgFgIClKpYAQEkroBYAApaqWAIAJa2AWgAIWKpiCQCUtAJqASBgqYolAFDSCqgFgIClKpYAQEkroBYAApaqWAIAJa2AWgAIWKpiCQCUtAJqASBgqYolAFDSCqgFgIClKpYAQEkroBYAApaqWAIAJa2AWgAIWKpiCQCUtAJqASBgqYolAFDSCqgFgIClKpYmARD84dBZH8ZUyplD2wQg0ePhszyOPUepyj2aACR7R5D5CxmUcubQTgEg0zuCzF/JMkepyj0A4HJaAPA/PXwEKP+fzk/bPAH4Enh+pSobNwE4DuNnoBLpeWknAXBelthWSQAAlLQCagEgYKmKJQBQ0gqoBYCApSqWAEBJK6AWAAKWqlgCACWtgFoACFiqYgkAlLQCagEgYKmKJQBQ0gqoBYCApSqWAEBJK6AWAAKWqlgCACWtgFoACFiqYgkAlLQCagEgYKmKJQBQ0gqoBYCApSqWAEBJK6AWAAKWqlgCACWtgNp/K8bAgRXmYIEAAAAASUVORK5CYII=\&quot; alt=\&quot;\&quot; data-original-src=\&quot;np://user.desktop.nicepage.com/Site_616701894/images/4543046.png\&quot; data-color=\&quot;#000000\&quot;>&quot;,&quot;href&quot;:&quot;#&quot;}" data-lang-pt="{&quot;content&quot;:&quot;<img src=\&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAEAUlEQVR4Xu2csaoTURRFb8IEJMhNGsFvsFEsLPwJC0E/xEaw9G8UxNLG0tJea20URJIIVo+RlM8id/a778w7OWe91j1nzt57eZMUM4vCX+oEFqndY74AQHIIAAAAkieQ3D4nAAAkTyC5fU4AAEieQHL7nAAAkDyB5PY5AQAgeQLJ7XMCAEDyBJLb5wQAgOQJJLfPCQAAyRNIbp8TAACSJ5DcPicAACRPILl9TgAAaCew2+0eLZfL1+M4Pi6l3G5fgeIGEziUUj6WUl7WWr+29mieAIfD4d44jp9LKbdaw/h3Vwn8Hobh/nq9/nZqqyYA+/3+fSnliStrLDM1gbe11me9APwspdyZekd0rhLY11o3AOCqk1mX2dVat70A8BEwa2fXd7NxHN9sNpvnXQDwJfD6Cpl50q9hGB6s1+vvXQAcL+Zn4MzV9d1uP47jh9Vq9aJV/vE2zV8BfbtwtfcEAMB7Q8b7AYBxwN7HA4D3hoz3AwDjgL2PBwDvDRnvBwDGAXsfDwDeGzLeDwCMA/Y+HgC8N2S8HwAYB+x9PAB4b8h4PwAwDtj7eADw3pDxfgBgHLD38QDgvSHj/QDAOGDv4wHAe0PG+wGAccDexwOA94aM9wMA44C9jwcA7w0Z7wcAxgF7Hw8A3hsy3g8AjAP2Ph4AvDdkvB8AGAfsfTwAeG/IeL9JAPBwqHELl8f/WSwWny4uLl5tt9vjq3lM/5oA8Hi4af6nhv8tpTystX6x3KAJAO8Isoy/OftdrfVpU9UhmAIA7wjqCLjz0h+11rudM05eDgCW6fbPdgEA7wjqL/KqE27+I4AvgVftrvs6H18Cjzb4GdhdpjLA189AZXO055dA80vg+VliYyUBAFDSCqgFgIClKpYAQEkroBYAApaqWAIAJa2AWgAIWKpiCQCUtAJqASBgqYolAFDSCqgFgIClKpYAQEkroBYAApaqWAIAJa2AWgAIWKpiCQCUtAJqASBgqYolAFDSCqgFgIClKpYAQEkroBYAApaqWAIAJa2AWgAIWKpiCQCUtAJqASBgqYolAFDSCqgFgIClKpYmARD84dBZH8ZUyplD2wQg0ePhszyOPUepyj2aACR7R5D5CxmUcubQTgEg0zuCzF/JMkepyj0A4HJaAPA/PXwEKP+fzk/bPAH4Enh+pSobNwE4DuNnoBLpeWknAXBelthWSQAAlLQCagEgYKmKJQBQ0gqoBYCApSqWAEBJK6AWAAKWqlgCACWtgFoACFiqYgkAlLQCagEgYKmKJQBQ0gqoBYCApSqWAEBJK6AWAAKWqlgCACWtgFoACFiqYgkAlLQCagEgYKmKJQBQ0gqoBYCApSqWAEBJK6AWAAKWqlgCACWtgNp/K8bAgRXmYIEAAAAASUVORK5CYII=\&quot; alt=\&quot;\&quot; data-original-src=\&quot;np://user.desktop.nicepage.com/Site_616701894/images/4543046.png\&quot; data-color=\&quot;#000000\&quot;>&quot;,&quot;href&quot;:&quot;#&quot;}">
-              <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 302 302" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-8a8f"></use></svg>
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg-8a8f" x="0px" y="0px" viewBox="0 0 302 302" style="enable-background:new 0 0 302 302;" xml:space="preserve" class="u-svg-content"><g><rect y="36" width="302" height="30"></rect><rect y="236" width="302" height="30"></rect><rect y="136" width="302" height="30"></rect>
-</g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
-            </a>
-          </div>
-          <div class="u-custom-menu u-nav-container">
-            <ul class="u-custom-font u-heading-font u-nav u-spacing-30 u-unstyled u-nav-1" role="menubar"><li class="u-nav-item" role="none"><a class="u-border-4 u-border-active-custom-color-4 u-border-hover-palette-3-light-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-grey-5 u-text-custom-color-4 u-text-hover-custom-color-4" href="index.html" data-lang-fr="{&quot;content&quot;:&quot;Accueil&quot;,&quot;href&quot;:&quot;Accueil.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Home&quot;,&quot;href&quot;:&quot;Accueil.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Início&quot;,&quot;href&quot;:&quot;Accueil.html&quot;}" style="padding: 2px 8px;" role="menuitem">Accueil</a>
-</li><li class="u-nav-item" role="none"><a class="u-border-4 u-border-active-custom-color-4 u-border-hover-palette-3-light-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-grey-5 u-text-custom-color-4 u-text-hover-custom-color-4" href="Actualites.html" data-lang-fr="{&quot;content&quot;:&quot;Actualités&quot;,&quot;href&quot;:&quot;Actualites.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;News&quot;,&quot;href&quot;:&quot;Actualites.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Notícias&quot;,&quot;href&quot;:&quot;Actualites.html&quot;}" style="padding: 2px 8px;" role="menuitem">Actualités</a>
-</li><li class="u-nav-item" role="none"><a class="u-border-4 u-border-active-custom-color-4 u-border-hover-palette-3-light-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-grey-5 u-text-custom-color-4 u-text-hover-custom-color-4" href="Nos-activites.html" data-lang-fr="{&quot;content&quot;:&quot;Nos activités&quot;,&quot;href&quot;:&quot;Nos-activites.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Activities&quot;,&quot;href&quot;:&quot;Nos-activites.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;as nossas actividades&quot;,&quot;href&quot;:&quot;Nos-activites.html&quot;}" style="padding: 2px 8px;" role="menuitem">Nos activités</a>
-</li><li class="u-nav-item" role="none"><a class="u-border-4 u-border-active-custom-color-4 u-border-hover-palette-3-light-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-grey-5 u-text-custom-color-4 u-text-hover-custom-color-4" href="Notre-equipe.html" data-lang-fr="{&quot;content&quot;:&quot;Notre équipe&quot;,&quot;href&quot;:&quot;Notre-equipe.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Teams&quot;,&quot;href&quot;:&quot;notre-equipe.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Equipas&quot;,&quot;href&quot;:&quot;Notre-equipe.html&quot;}" style="padding: 2px 8px;" role="menuitem">Notre équipe</a>
-</li><li class="u-nav-item" role="none"><a class="u-border-4 u-border-active-custom-color-4 u-border-hover-palette-3-light-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-grey-5 u-text-custom-color-4 u-text-hover-custom-color-4" href="Contact.html" data-lang-fr="{&quot;content&quot;:&quot;Contact&quot;,&quot;href&quot;:&quot;Contact.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;contact&quot;,&quot;href&quot;:&quot;Contact.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;contactos&quot;,&quot;href&quot;:&quot;Contact.html&quot;}" style="padding: 2px 8px;" role="menuitem">Contact</a>
-</li><li class="u-nav-item" role="none"><a class="u-border-4 u-border-active-custom-color-4 u-border-hover-palette-3-light-2 u-border-no-left u-border-no-right u-border-no-top u-button-style u-nav-link u-text-active-grey-5 u-text-custom-color-4 u-text-hover-custom-color-4" href="https://www.imaadcapitalpartners.com/blog/blog" style="padding: 2px 8px;" role="menuitem" data-lang-fr="{&quot;content&quot;:&quot;Blog&quot;,&quot;href&quot;:&quot;Blog-Template.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Blog&quot;,&quot;href&quot;:&quot;Blog-Template.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Blog&quot;,&quot;href&quot;:&quot;Blog-Template.html&quot;}">Blog</a>
-</li></ul>
-          </div>
-          <div class="u-custom-menu u-nav-container-collapse" id="e5f5" role="region" aria-label="Menu panel">
-            <div class="u-align-center u-container-align-center u-container-style u-custom-color-6 u-inner-container-layout u-opacity u-opacity-70 u-sidenav u-sidenav-1">
-              <div class="u-inner-container-layout u-sidenav-overflow" style="padding: 0px;">
-                <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
-                <ul class="u-align-center u-custom-font u-heading-font u-nav u-popupmenu-items u-spacing-14 u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html" data-lang-fr="{&quot;content&quot;:&quot;Accueil&quot;,&quot;href&quot;:&quot;Accueil.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Home&quot;,&quot;href&quot;:&quot;Accueil.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Início&quot;,&quot;href&quot;:&quot;Accueil.html&quot;}">Accueil</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Actualites.html" data-lang-fr="{&quot;content&quot;:&quot;Actualités&quot;,&quot;href&quot;:&quot;Actualites.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;News&quot;,&quot;href&quot;:&quot;Actualites.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Notícias&quot;,&quot;href&quot;:&quot;Actualites.html&quot;}">Actualités</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Nos-activites.html" data-lang-fr="{&quot;content&quot;:&quot;Nos activités&quot;,&quot;href&quot;:&quot;Nos-activites.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Activities&quot;,&quot;href&quot;:&quot;Nos-activites.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;as nossas actividades&quot;,&quot;href&quot;:&quot;Nos-activites.html&quot;}">Nos activités</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Notre-equipe.html" data-lang-fr="{&quot;content&quot;:&quot;Notre équipe&quot;,&quot;href&quot;:&quot;Notre-equipe.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Teams&quot;,&quot;href&quot;:&quot;notre-equipe.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Equipas&quot;,&quot;href&quot;:&quot;Notre-equipe.html&quot;}">Notre équipe</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contact.html" data-lang-fr="{&quot;content&quot;:&quot;Contact&quot;,&quot;href&quot;:&quot;Contact.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;contact&quot;,&quot;href&quot;:&quot;Contact.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;contactos&quot;,&quot;href&quot;:&quot;Contact.html&quot;}">Contact</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://www.imaadcapitalpartners.com/blog/blog" data-lang-fr="{&quot;content&quot;:&quot;Blog&quot;,&quot;href&quot;:&quot;Blog-Template.html&quot;}" data-lang-en="{&quot;content&quot;:&quot;Blog&quot;,&quot;href&quot;:&quot;Blog-Template.html&quot;}" data-lang-pt="{&quot;content&quot;:&quot;Blog&quot;,&quot;href&quot;:&quot;Blog-Template.html&quot;}">Blog</a>
-</li></ul>
-              </div>
-            </div>
-            <div class="u-menu-overlay"></div>
-          </div>
-        </nav>
-        <a href="index.html" data-page-id="2017020947" class="u-align-center-md u-align-center-sm u-align-center-xs u-image u-logo u-image-1" data-image-width="693" data-image-height="1061" title="logo" data-lang-fr="2017020947" data-lang-en="2017020947" data-lang-pt="2017020947">
-          <img src="/images/logo-removebg-preview.png" class="u-logo-image u-logo-image-1" width="693" height="1061">
-        </a>
-        <div class="u-h-spacing-12 u-language u-language-content-text u-language-layout-dropdown u-v-spacing-6 u-language-1" data-animation-name="" data-animation-duration="0" data-animation-direction="">
-          <a class="u-language-active u-language-url" data-lang-text="FR" href="Notre-equipe.html#" data-language="fr" style="background-image: none;">
-            <svg class="u-caret u-caret-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" style="fill:currentColor;" xml:space="preserve"><polygon class="st0" points="8,12 2,4 14,4 "></polygon></svg><span class="u-icon u-language-fr u-language-icon u-icon-1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" style="width: 1em; height: 1em;"><rect y="16" fill="#EDEDED" width="112" height="80"></rect><rect y="16" fill="#323E95" width="37.3" height="80"></rect><rect x="74.7" y="16" fill="#D80031" width="37.3" height="80"></rect></svg></span>
-          </a>
-          <div class="u-border-1 u-border-grey-15 u-h-spacing-12 u-language-dropdown u-v-spacing-6 u-white">
-            <a class="u-language-dropdown-url u-language-url" data-lang-text="FR" href="Notre-equipe.html" data-language="fr" style="background-image: none;"><span class="u-icon u-language-fr u-language-icon u-icon-1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" style="width: 1em; height: 1em;"><rect y="16" fill="#EDEDED" width="112" height="80"></rect><rect y="16" fill="#323E95" width="37.3" height="80"></rect><rect x="74.7" y="16" fill="#D80031" width="37.3" height="80"></rect></svg></span>
-            </a>
-            <a class="u-language-dropdown-url u-language-url" data-lang-text="EN" href="en/Notre-equipe.html" data-language="en" style="background-image: none;"><span class="u-icon u-language-en u-language-icon u-icon-3"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" style="width: 1em; height: 1em;"><path fill="#EDEDED" d="M51.3,63.9V96h-3.5V70.7L11,96H7.1l39.8-27.3h-7.8L0,95.5v-7.8l27.5-19H0v-4.8C0,63.9,51.3,63.9,51.3,63.9z
-	 M61.7,96h3.4V70.7l37,25.3h9.9v-0.8L73.2,68.7H81l31,21.2v-3.1L85.4,68.7H112v-4.8H61.7V96z M51.3,16h-3.5v26.9L8.8,16H0v0.8
-	l40.9,28.1h-7.7L0,22.1v3.8l27.5,19H0v4.8h51.3V16z M67.3,44.9L109.4,16h-5.1L65.1,42.9V16h-3.4v33.7H112v-4.8H85.4L112,26.6v-7
-	L75,44.9H67.3z"></path><path fill="#1A237B" d="M65.1,42.9V16h39.2L65.1,42.9z M47.8,16h-39l39,26.9V16z M112,44.9V26.6L85.4,44.9H112z M112,86.8V68.7H85.4
-	L112,86.8z M11,96h36.8V70.7L11,96z M65.1,96h37l-37-25.3V96z M0,68.7v19l27.5-19H0z M0,25.9v19h27.5L0,25.9z"></path><path fill="#BD0034" d="M112,16v3.6L75,44.9h-7.7L109.4,16H112z M73.2,68.7L112,95.2v-5.3L81,68.7H73.2z M40.9,44.9L0,16.8v5.3
-	l33.2,22.8C33.2,44.9,40.9,44.9,40.9,44.9z M39.1,68.7L0,95.5V96h7.1l39.8-27.3H39.1z M61.7,16H51.3v33.7H0v14.2h51.3V96h10.4V63.9
-	H112V49.7H61.7V16z"></path></svg></span>
-            </a>
-            <a class="u-language-dropdown-url u-language-url" data-lang-text="PORT" href="pt/Notre-equipe.html" data-language="pt" style="background-image: none;"><span class="u-icon u-language-icon u-language-pt u-icon-4"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 112 112" x="0px" y="0px" style="width: 1em; height: 1em;"><rect x="39.2" y="16" fill="#EA0020" width="72.8" height="80"></rect><rect y="16" fill="#2A680B" width="39.2" height="80"></rect><path fill="#FFD652" d="M39,36c-9.9,0-18,8.3-18,18.5C21,64.7,29.1,73,39,73c9.9,0,18-8.3,18-18.5C57,44.3,48.9,36,39,36z"></path><path fill="#FFFFFF" d="M31.6,57.3c0,2.1,0.8,4,2.2,5.4C35.1,64.1,37,65,39,65c2,0,3.9-0.9,5.2-2.3c1.3-1.4,2.2-3.3,2.2-5.5l0,0V47
-	l-14.8,0V57.3L31.6,57.3z"></path><path fill="#EA0020" d="M28.2,58L28.2,58c0,3.1,1.2,5.9,3.2,7.9c2,2,4.7,3.3,7.6,3.3c3,0,5.6-1.3,7.6-3.3c2-2,3.2-4.8,3.2-7.9l0,0
-	V42.8H28.2L28.2,58L28.2,58z M45.4,47.3V57l0,1l0,0c0,0.3,0,0.6,0,0.8c-0.2,1.5-0.8,2.9-1.8,3.9c-1.2,1.2-2.8,2-4.5,2
-	c-1.8,0-3.3-0.8-4.5-2c-1.2-1.2-1.9-3-1.9-4.7V47.3L45.4,47.3L45.4,47.3z"></path><path fill="#1A0095" d="M37.6,55.4l0-2.1l2.8,0v2.1c0,0.4-0.2,0.8-0.4,1.1c-0.3,0.3-0.6,0.5-1,0.5c-0.4,0-0.7-0.2-1-0.5
-	C37.7,56.3,37.6,55.9,37.6,55.4L37.6,55.4L37.6,55.4z M37.6,60.6L37.6,60.6c0,0.4,0.2,0.8,0.4,1.1c0.2,0.3,0.6,0.5,1,0.5
-	c0.4,0,0.7-0.2,1-0.5c0.3-0.3,0.4-0.7,0.4-1.1v-2.1l-2.8,0V60.6L37.6,60.6z M33.7,55.4L33.7,55.4c0,0.4,0.2,0.8,0.4,1.1
-	c0.3,0.3,0.6,0.5,1,0.5c0.4,0,0.7-0.2,1-0.5c0.3-0.3,0.4-0.7,0.4-1.1v-2.1l-2.8,0L33.7,55.4L33.7,55.4z M41.5,55.4L41.5,55.4
-	c0,0.4,0.2,0.8,0.4,1.1c0.3,0.3,0.6,0.5,1,0.5c0.4,0,0.7-0.2,1-0.5c0.3-0.3,0.4-0.7,0.4-1.1v-2.1h-2.8L41.5,55.4L41.5,55.4z
-	 M37.6,50.3L37.6,50.3c0,0.4,0.2,0.8,0.4,1.1c0.3,0.3,0.6,0.5,1,0.5c0.4,0,0.7-0.2,1-0.5c0.3-0.3,0.4-0.7,0.4-1.1v-2.1h-2.8V50.3
-	L37.6,50.3z"></path></svg></span>
-            </a>
-          </div>
-        </div>
-      </div></header>
-    <section class="skrollable u-clearfix u-container-align-center u-image u-parallax u-section-1" id="sec-44c7" data-image-width="2949" data-image-height="2155">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-        <h1 class="u-align-center u-text u-text-custom-color-4 u-text-default u-text-1" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">NOTRE ÉQUIPE</h1>
-      </div>
-    </section>
-    <section class="u-clearfix u-image u-section-2" id="carousel_0c9b" data-image-width="6905" data-image-height="2395">
-      <div class="u-clearfix u-sheet u-valign-middle-md u-sheet-1">
-        <div class="u-container-style u-group u-image u-preserve-proportions u-shape-rectangle u-image-1" data-image-width="803" data-image-height="803">
-          <div class="u-container-layout u-container-layout-1"></div>
-        </div>
-        <h2 class="u-align-center u-text u-text-custom-color-4 u-text-1">Issa Mehmet N’DIAYE </h2>
-        <p class="u-align-center u-custom-font u-font-pt-sans u-text u-text-custom-color-4 u-text-2">Fondateur &amp; Président Directeur Général&nbsp; </p>
-        <div class="u-align-center u-border-1 u-border-custom-color-4 u-expanded-width u-line u-line-horizontal u-line-1"></div>
-        <div class="u-clearfix u-expanded-width u-gutter-16 u-layout-wrap u-layout-wrap-1">
-          <div class="u-gutter-0 u-layout">
-            <div class="u-layout-row">
-              <div class="u-align-justify u-container-style u-layout-cell u-size-60 u-layout-cell-1">
-                <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xl u-container-layout-2">
-                  <p class="u-custom-font u-heading-font u-text u-text-body-alt-color u-text-3">Mehmet est le fondateur &amp; Président Directeur Général de Imaad Holding , Mehmet cumule plus de 10 années 
-d’expérience dans le domaine du marché des capitaux, du financement 
-structuré, de l’intermédiation et du négoce. Après son BAC série C 
-(Scientifique) obtenu au Collège St Viateur d’Abidjan, il entre à 
-l’Université Internationale de Grand-Bassam en 2007 .</p>
-                  <p class="u-custom-font u-heading-font u-text u-text-body-alt-color u-text-4"><span style="font-weight: 700;">En 2009,</span> il s’envole pour les 
-États Unis où il est admis à la Georgia State University à Atlanta, où 
-en 2011 il obtient un Bachelor d’Honneur en Mathématiques &amp; Sciences
- Actuarielles, option finance .&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br><span style="font-weight: 700;">En 2012</span> Il débute alors sa 
-carrière professionnelle en 2012 en ta​nt que Trader Algorithmique à SMB 
-Capital, une firme de trading investissant sur la bourse de New York 
-(NYSE) à Wall Street New York. &nbsp; &nbsp;<br><span style="font-weight: 700;">E<span style="font-weight: 700;">n 2013,</span></span>&nbsp;il est nommé Directeur 
-Business Development Africa à E&amp;I Global Consultants, une société 
-d’intermédiation spécialisée dans le négoce de produits pétroliers et 
-miniers basée à Arlington, Virginie. <br><span style="font-weight: 700;"> Fin 2013,</span>&nbsp;il rentre en Côte 
-d’Ivoire et en 2014 est nommé Trader Senior du Conseil Café-Cacao, 
-l’organe de régulation des filières café et cacao en Côte d’Ivoire.<br><span style="font-weight: 700;">E<span style="font-weight: 700;">n 2016,</span></span>&nbsp;il crée BlackPearl SA, 
-qui deviendra par la suite BlackPearl Financial Group Ltd, une banque 
-d’affaire spécialisée dans la structuration et le financement de projets
- d’infrastructures en Afrique, basée à Londres, UK, avec des bureaux de 
-représentation à Abidjan &amp; Nairobi.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="http://www.linkedin.com/in/mehmetissandiaye" class="u-active-white u-align-center u-border-1 u-border-palette-3-base u-btn u-btn-round u-button-style u-hover-white u-none u-radius-5 u-text-active-black u-text-body-alt-color u-text-hover-black u-btn-1" target="_blank">SUIVRE</a>
-      </div>
-    </section>
-    <section class="u-clearfix u-image u-section-4" id="carousel_a537" data-image-width="6905" data-image-height="2395">
-      <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-container-align-center u-container-style u-group u-image u-preserve-proportions u-shape-rectangle u-image-1" data-image-width="802" data-image-height="802">
-          <div class="u-container-layout u-container-layout-1"></div>
-        </div>
-        <h2 class="u-align-center u-text u-text-custom-color-4 u-text-1">Rym MOULAYE-IDRISS&nbsp;</h2>
-        <p class="u-align-center u-custom-font u-font-pt-sans u-text u-text-custom-color-4 u-text-2"> Co-fondatrice, Associée et Directrice Business Développement</p>
-        <div class="u-align-center u-border-1 u-border-custom-color-4 u-expanded-width u-line u-line-horizontal u-line-1"></div>
-        <div class="u-clearfix u-expanded-width u-gutter-16 u-layout-wrap u-layout-wrap-1">
-          <div class="u-gutter-0 u-layout">
-            <div class="u-layout-row">
-              <div class="u-align-justify u-container-style u-layout-cell u-size-60 u-layout-cell-1">
-                <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-2">
-                  <p class="u-custom-font u-heading-font u-text u-text-body-alt-color u-text-3">Rym cumule plus de 10 années d’expérience dans le domaine du 
-développement de projets économiques, sociaux et politiques, du conseil 
-en stratégie de développement, de financement et de levées de fonds 
-                                     Après son bac série ES 
-(économique et social) à Paris, elle s’oriente vers un Master en 
-communication et stratégie Marketing à La Sorbonne, et s’en suit un 
-Master en développement des territoires à Sciences-po Paris, en 2008. 
-                                      Rym cumule une expérience 
-pluridisciplinaire  dans divers secteurs, notamment l’immobilier (Icade 
-Property), l’énergie (Total), la finance (Union des Banques Arabes et 
-Françaises), et enfin dans l’Insertion &amp; l’emploi, en tant que 
-chargée de mission pour le Fonds Social Européen <br>
-                    <br> En 2012, Rym fait un retour aux 
-sources en Afrique, sa terre d’origine, où elle est consultante auprès 
-de structures étatiques et d’ associations en matière d’insertion des 
-jeunes et l’emploi, de leadership et d’entrepreneuriat, d’ 
-autonomisation des femmes, d’autosuffisance alimentaire, mais aussi de 
-lutte contre l’extrémisme violent, la radicalisation, la pauvreté etc.. <br>
-                    <br> Rym collabore par la suite avec 
-plusieurs organismes dont le G5 Sahel et participe à plusieurs colloques
- de l’Union Africaine, ONU Femmes, UNOWAS, le PNUD, et bien d’autres... 
-et fait le constat que l’Afrique a besoin de capitaux pour aider au 
-développement de projets à impacts sociaux-économiques forts, tous 
-secteurs confondus, et ce pour lutter contre les injustices, 
-l’instabilité politique et les flux migratoires… <br>
-                    <br> Pour cela, elle choisit d’aller à la
- source du « nerf de la guerre » en prospectant les financements 
-nécessaires pour bâtir un meilleur présent et consolider un meilleur 
-avenir aux populations Africaines et ainsi permettre au continent et à 
-chaque pays de bénéficier d’un développement durable, digne en terme 
-d’éducation, de formation, de bon vivre en développant des secteurs 
-clés, pour créer de la croissance, de l’emploi et relever le niveau 
-économique et social d’un pays ; <br>
-                    <br> C’est en ce sens qu’elle se lance 
-officiellement dans la levée de fonds d’investissement en 2017, en 
-créant le cabinet de conseil en stratégie et levée de fonds 
-d’investissements à Paris, Timeline Origine.
-                                    
-                                      Son parcours lui a permis de se bâtir un important réseau relationnel partout en Afrique.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="https://www.linkedin.com/in/rym-moulaye-idriss-a55b57176?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BLYvrhlwgSg%2BYhMbGLXu1Ww%3D%3D" class="u-active-white u-align-center u-border-1 u-border-hover-palette-3-light-1 u-border-palette-3-base u-btn u-btn-round u-button-style u-hover-white u-none u-radius-5 u-text-active-black u-text-body-alt-color u-text-hover-black u-btn-1" target="_blank">SUIVRE</a>
-      </div>
-    </section>
-    
-    
-    
-    <footer class="u-align-center-md u-align-center-sm u-align-center-xs u-clearfix u-custom-color-6 u-footer u-footer" id="sec-7778"><div class="u-clearfix u-sheet u-valign-middle-lg u-sheet-1">
-        <a href="index.html" data-page-id="2017020947" class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xs u-image u-logo u-image-1" data-image-width="693" data-image-height="1061" title="Accueil" data-lang-fr="2017020947" data-lang-en="2017020947" data-lang-pt="2017020947">
-          <img src="/images/logo-removebg-preview.png" class="u-logo-image u-logo-image-1" width="693" height="1061">
-        </a>
-        <p class="u-align-center u-text u-text-1" data-lang-fr="​&amp;nbsp;Société Anonyme au capital social de 200.000.000 FCFA&amp;nbsp; RCCM: CI-ABJ-03-2021—B17-00048<br>&amp;nbsp;Siège social : Cocody Riviera IV, M’Pouto, Rue Sol Béni, Immeuble KAYOA, 1er étage, Abidjan Côte d’Ivoire&amp;nbsp;<br>Adresse postale : 04 BP 2998 Abidjan 04&amp;nbsp;<br>&amp;nbsp;infos@imaadcapitalpartners.com •&amp;nbsp;Cocody, Riviera Palmeraie&amp;nbsp;•&amp;nbsp;+225 07 88 12 21 21<br>" data-lang-en="​Public limited company with a capital of 200,000,000 FCFA - RCCM: CI-ABJ-03-2021-B17-00048<br>Head office: Cocody Riviera IV, M'Pouto, Rue Sol Béni, Immeuble KAYOA, 1st floor, Abidjan, Côte d'Ivoire<br>Postal address: 04 BP 2998 Abidjan 04" data-lang-pt="​Sociedade anónima com um capital social de 200.000.000 FCFA - RCCM: CI-ABJ-03-2021-B17-00048<br>Sede social: Cocody Riviera IV, M'Pouto, Rue Sol Béni, Immeuble KAYOA, 1st floor, Abidjan, Côte d'Ivoire<br>Endereço postal: 04 BP 2998 Abidjan 04"> &nbsp;Société Anonyme au capital social de 200.000.000 FCFA&nbsp; RCCM: CI-ABJ-03-2021—B17-00048<br>&nbsp;Siège social : Cocody Riviera IV, M’Pouto, Rue Sol Béni, Immeuble KAYOA, 1er étage, Abidjan Côte d’Ivoire&nbsp;<br>Adresse postale : 04 BP 2998 Abidjan 04&nbsp;<br>&nbsp;infos@imaadcapitalpartners.com •&nbsp;Cocody, Riviera Palmeraie&nbsp;•&nbsp;+225 07 88 12 21 21<br>
-        </p>
-        <div class="u-align-center-sm u-align-center-xs u-social-icons u-social-icons-1">
-          <a class="u-social-url" title="facebook" target="_blank" href="Notre-equipe.html"><span class="u-file-icon u-icon u-social-facebook u-social-icon u-text-custom-color-4 u-icon-1"><img src="https://assets.nicepagecdn.com/23954ad7/5333801/images/4406234-c340c698.png" alt=""></span>
-          </a>
-          <a class="u-social-url" title="twitter" target="_blank" href="Notre-equipe.html"><span class="u-file-icon u-icon u-social-icon u-social-twitter u-text-custom-color-4 u-icon-2"><img src="https://assets.nicepagecdn.com/23954ad7/5333801/images/4628695-7955464c.png" alt=""></span>
-          </a>
-          <a class="u-social-url" target="_blank" data-type="LinkedIn" title="LinkedIn" href="Notre-equipe.html"><span class="u-file-icon u-icon u-social-icon u-social-linkedin u-text-custom-color-4 u-icon-3"><img src="https://assets.nicepagecdn.com/23954ad7/5333801/images/4628658-1502fcf0.png" alt=""></span>
-          </a>
-        </div>
-        <p class="u-align-center u-text u-text-grey-40 u-text-2" data-lang-fr="© 2023 Imaad Capital Partners ,&amp;nbsp; &amp;nbsp;Developpé par <a href=&quot;www.printsartsmultimedia.com&quot; class=&quot;u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1 u-block-control&quot; data-lang-pt=&quot;{&amp;quot;content&amp;quot;:&amp;quot;Print's Arts&amp;quot;,&amp;quot;href&amp;quot;:&amp;quot;https://printsartsmultimedia.com&amp;quot;}&quot; data-lang-fr=&quot;{&amp;quot;content&amp;quot;:&amp;quot;Print's Arts&amp;quot;,&amp;quot;href&amp;quot;:&amp;quot;https://printsartsmultimedia.com&amp;quot;}&quot; target=&quot;_blank&quot; style=&quot;background-image: none&quot; data-block=&quot;115&quot; data-block-type=&quot;Button,TextButton&quot;>Print's Arts</a>&amp;nbsp;" data-lang-en="© 2023 Imaad Capital Partners ,&amp;nbsp; &amp;nbsp; Developed by&amp;nbsp;<a href=&quot;https://printsartsmultimedia.com&quot; class=&quot;u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1&quot; target=&quot;_blank&quot; style=&quot;background-image: none&quot; data-lang-fr=&quot;{&amp;quot;content&amp;quot;:&amp;quot;Print's Arts&amp;quot;,&amp;quot;href&amp;quot;:&amp;quot;https://printsartsmultimedia.com&amp;quot;}&quot;>Print's Arts</a>&amp;nbsp;" data-lang-pt="​2023 Imaad Capital Partners , Desenvolvido por <a href=&quot;www.printsartsmultimedia.com&quot; class=&quot;u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-block-c1a9-36&quot; style=&quot;background-image: none; padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px&quot;>Print's Arts</a>">© 2023 Imaad Capital Partners ,&nbsp; &nbsp;Developpé par <a href="https://www.imaadcapitalpartners.com/www.printsartsmultimedia.com" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1" data-lang-pt="{&quot;content&quot;:&quot;Print's Arts&quot;,&quot;href&quot;:&quot;https://printsartsmultimedia.com&quot;}" data-lang-fr="{&quot;content&quot;:&quot;Print's Arts&quot;,&quot;href&quot;:&quot;https://printsartsmultimedia.com&quot;}" target="_blank">Print's Arts</a>&nbsp;
-        </p>
-      </div></footer>
-</template>
-
-
+<style scoped>
+.team-card {
+  opacity: 0;
+}
+</style>

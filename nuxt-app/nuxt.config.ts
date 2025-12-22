@@ -10,11 +10,7 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/nicepage-site.css',
-    '~/assets/css/index.css',
-    '~/assets/css/fonts.css',
-    '~/assets/css/Accueil-fonts.css',
-    '~/assets/css/logo-fix.css'
+    '~/assets/css/main.css'
   ],
 
   modules: [
@@ -23,7 +19,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     '@nuxt/content',
-    '@nuxt/scripts'
+    '@nuxt/scripts',
+    '@nuxtjs/tailwindcss'
   ],
 
   // Configuration Vite pour SCSS
@@ -103,11 +100,18 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: 'Catalyseur de la Souveraineté et de la Croissance Durable'
-        }
+          content: 'Catalyseur de la Souveraineté et de la Croissance Durable en Afrique'
+        },
+        { name: 'theme-color', content: '#0A192F' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { 
+          rel: 'stylesheet', 
+          href: 'https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400;500;600;700&display=swap' 
+        }
       ]
     }
   }

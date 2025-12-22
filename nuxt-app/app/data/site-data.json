@@ -43,7 +43,11 @@
       "external": true
     }
   ],
-  "languages": ["FR", "EN", "PT"],
+  "languages": [
+    "FR",
+    "EN",
+    "PT"
+  ],
   "pages": {
     "accueil": {
       "hero": {
@@ -53,7 +57,11 @@
       },
       "presentation": {
         "title": "Notre Essence",
-        "keywords": ["Souveraineté", "Impact", "Excellence"],
+        "keywords": [
+          "Souveraineté",
+          "Impact",
+          "Excellence"
+        ],
         "description": "Imaad Financial Group (IFG) est une banque d'affaires Panafricaine indépendante spécialisée dans la structuration, le financement et la réalisation de projets structurants en Afrique, au Moyen-Orient et Amérique Latine.",
         "objectif": "Accélérer la souveraineté financière des États, renforcer les capacités d'investissement des entreprises et créer des ponts entre capitaux internationaux et projets à fort impact économique, social et environnemental."
       },
@@ -396,6 +404,81 @@
         "subtitle": "Analyses et perspectives sur la finance africaine"
       },
       "posts": []
+    },
+    "capitalRisque": {
+      "hero": {
+        "title": "Le Capital-Risque & le financement structuré",
+        "subtitle": "Prise de participation dans les entreprises & financement et développement de projets immobiliers dans nos secteurs clés.",
+        "backgroundImage": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80"
+      },
+      "presentation": {
+        "title": "Investir dans l'avenir",
+        "description": "IMAAD Financial Group intervient en fonds propres ou quasi-fonds propres pour accompagner le développement des entreprises à fort potentiel de croissance et structurer des projets immobiliers d'envergure."
+      },
+      "verticaux": [
+        {
+          "title": "Prise de participation",
+          "subtitle": "dans les entreprises",
+          "image": "https://assets.nicepagecdn.com/23954ad7/5333801/images/4406234-c340c698.png"
+        },
+        {
+          "title": "Taille des projets",
+          "subtitle": "Interventions structurées",
+          "image": "https://assets.nicepagecdn.com/23954ad7/5333801/images/4628695-7955464c.png"
+        },
+        {
+          "title": "Financement immobilier",
+          "subtitle": "Développement de projets",
+          "image": "https://assets.nicepagecdn.com/23954ad7/5333801/images/4628658-1502fcf0.png"
+        }
+      ],
+      "projets": [
+        {
+          "intitule": "Unité de Recyclage de Pneus",
+          "client": "Bénin",
+          "montant": "€2.000.000",
+          "statut": "Closé 2024"
+        },
+        {
+          "intitule": "Construction d'une tour administrative",
+          "client": "Côte d'Ivoire",
+          "montant": "€40.000.000",
+          "statut": "En cours"
+        }
+      ],
+      "total": "€ 42.000.000"
+    },
+    "partenariatsPublicPrive": {
+      "hero": {
+        "title": "Conseil et le développement de Partenariats Public-Privé",
+        "subtitle": "Imaad dispose d’une expertise en interne aussi bien dans la structuration, que dans le financement et la réalisation des projets parfois complexes.",
+        "backgroundImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
+      },
+      "presentation": {
+        "title": "Expertise PPP",
+        "description": "Nous accompagnons les gouvernements et les partenaires privés dans la conception, le financement et la gestion d'infrastructures critiques pour le développement économique."
+      },
+      "projets": [
+        {
+          "intitule": "Ligne de chemin de fer San-Pédro, Man, Odienné, Frontière Mali",
+          "pays": "Côte d’Ivoire",
+          "montant": "€3.500.000.000",
+          "statut": "Études de faisabilité à faire"
+        },
+        {
+          "intitule": "Imaad Plaza Towers (Construction de tours administratives)",
+          "pays": "Côte d’Ivoire",
+          "montant": "€250.000.000",
+          "statut": "Études de faisabilité en cours"
+        },
+        {
+          "intitule": "Construction & Entretien de la route entre Safim & Jugudul",
+          "pays": "Guinée-Bissau",
+          "montant": "€80.000.000",
+          "statut": "Études de faisabilité en cours"
+        }
+      ],
+      "total": "€3.830.000.000"
     }
   }
 }
