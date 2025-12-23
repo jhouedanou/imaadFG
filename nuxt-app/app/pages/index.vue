@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 
 // Import site data from JSON
-const { site, pages } = useSiteData()
+const { site, pages, images } = useSiteData()
 const homeData = computed(() => pages.accueil)
 
 // SEO - use data from JSON
@@ -17,43 +17,45 @@ useHead({
   ]
 })
 
-// Verticaux data from JSON (nos-activites leviers)
+// Verticaux data from JSON (nos-activites leviers) with images from JSON
 const verticaux = computed(() => {
   const leviers = pages['nos-activites']?.modele?.leviers
+  const imgVerticaux = images?.verticaux || {}
+  
   if (leviers && leviers.length > 0) {
     return leviers.map((levier, index) => ({
       title: levier.title,
       description: levier.description,
-      // Unsplash images
+      // Images from JSON (images.verticaux) - using camelCase keys
       image: index === 0 
-        ? 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80'
+        ? imgVerticaux.financementSouverain || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80'
         : index === 1 
-          ? 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80'
-          : 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
+          ? imgVerticaux.corporateFinance || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80'
+          : imgVerticaux.ppp || 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
       icon: levier.icon,
       link: `/nos-activites#${levier.id}`
     }))
   }
-  // Fallback with Unsplash images
+  // Fallback with images from JSON
   return [
     {
       title: 'Financement Souverain',
       description: 'Accompagnement des États dans la mobilisation de financements concessionnels, semi-concessionnels et commerciaux.',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
+      image: imgVerticaux.financementSouverain || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
       icon: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier4ICONE.png',
       link: '/nos-activites#financement-souverain'
     },
     {
       title: 'Corporate & Trade Finance',
       description: 'Mobilisation de fonds CAPEX & OPEX pour les entreprises. Financement structuré.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+      image: imgVerticaux.corporateFinance || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
       icon: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1banque.png',
       link: '/nos-activites#corporate-finance'
     },
     {
       title: 'Partenariats Public-Privé',
       description: 'Conseil et développement de projets PPP. Structuration financière de grands projets.',
-      image: 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
+      image: imgVerticaux.ppp || 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
       icon: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier2ICONE.png',
       link: '/nos-activites#ppp'
     }
