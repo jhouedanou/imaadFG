@@ -6,6 +6,7 @@ export const useSiteData = () => {
     images: siteData.images,
     navigation: siteData.navigation,
     languages: siteData.languages,
-    pages: siteData.pages
+    pages: siteData.pages,
+    footer: siteData.footer
   }
 }

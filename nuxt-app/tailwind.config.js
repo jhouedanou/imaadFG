@@ -11,49 +11,52 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Palette Industrial Tech - IMAAD 2.0
-        // Politique "Zéro Blanc" - WCAG 2.1 AA Compliant
+        // Palette IMAAD - Basée sur wireframe client
+        // Couleurs principales extraites du wireframe
         'petrol': {
-          DEFAULT: '#0A192F',  // Deep Petrol Navy - Fond sombre principal
-          light: '#112240',
-          dark: '#020C1B',
+          DEFAULT: '#0b1f3a',  // --blue-900 du wireframe (Deep Navy)
+          light: '#1a3358',
+          dark: '#061528',
         },
         'gold': {
-          DEFAULT: '#C9A227',  // Golden Yellow - Accent principal
-          light: '#D4B84A',
-          dark: '#A68B1F',
+          DEFAULT: '#c7a14a',  // --gold du wireframe (Or doré)
+          light: '#d4b366',
+          dark: '#a68937',
         },
-        'cyan': {
-          DEFAULT: '#C9A227',  // Remplacé par Gold
-          light: '#D4B84A',
-          dark: '#A68B1F',
+        'blue': {
+          DEFAULT: '#1d4ed8',  // --blue-600 du wireframe (Bleu électrique)
+          light: '#3b82f6',
+          dark: '#1e40af',
         },
         'arch-grey': {
-          DEFAULT: '#F0F4F8',  // Architectural Grey - Fond clair
-          light: '#F7FAFC',
-          dark: '#E2E8F0',
+          DEFAULT: '#f7f7f8',  // --bg du wireframe (Fond clair)
+          light: '#ffffff',
+          dark: '#e5e7eb',
+        },
+        'muted': {
+          DEFAULT: '#6b7280',  // --muted du wireframe (Gris texte)
+          light: '#9ca3af',
+          dark: '#4b5563',
         },
         'charcoal': {
-          DEFAULT: '#1A202C',  // Deep Charcoal - Texte sur clair
+          DEFAULT: '#111111',  // Texte principal
           light: '#2D3748',
-          dark: '#171923',
-        },
-        'silver': {
-          DEFAULT: '#E2E8F0',  // Cool Silver - Texte sur sombre
-          light: '#EDF2F7',
-          dark: '#CBD5E0',
+          dark: '#000000',
         },
         // Legacy aliases pour compatibilité
-        'bleu-nuit': '#0A192F',
-        'or': '#C9A227',
-        'ivory': '#F0F4F8',
+        'bleu-nuit': '#0b1f3a',
+        'or': '#c7a14a',
+        'ivory': '#f7f7f8',
       },
       fontFamily: {
-        'michroma': ['Michroma', 'sans-serif'],
-        'inter': ['Inter', 'sans-serif'],
+        // Polices du wireframe client
+        'poppins': ['Poppins', 'sans-serif'],
+        'opensans': ['Open Sans', 'sans-serif'],
         // Legacy aliases
-        'playfair': ['Michroma', 'sans-serif'],
-        'montserrat': ['Inter', 'sans-serif'],
+        'michroma': ['Poppins', 'sans-serif'],
+        'inter': ['Open Sans', 'sans-serif'],
+        'playfair': ['Poppins', 'sans-serif'],
+        'montserrat': ['Open Sans', 'sans-serif'],
       },
       fontSize: {
         'hero': ['2.5rem', { lineHeight: '1.1', letterSpacing: '0.03em' }],

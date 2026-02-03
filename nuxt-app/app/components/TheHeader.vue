@@ -5,39 +5,20 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 const { site, navigation } = useSiteData()
 
 const isScrolled = ref(false)
-const isVisible = ref(true)
 const isMobileMenuOpen = ref(false)
-const headerRef = ref<HTMLElement | null>(null)
-const lastScrollY = ref(0)
 
 // Use navigation from JSON data, filter out external links for main nav
 const navItems = computed(() => 
   navigation
-    .filter(item => !item.external)
-    .map(item => ({
+    .filter((item: any) => !item.external)
+    .map((item: any) => ({
       label: item.label,
       to: item.path
     }))
 )
 
 const handleScroll = () => {
-  const currentScrollY = window.scrollY
-
-  // Détermine si on a scrollé
-  isScrolled.value = currentScrollY > 50
-
-  // Détermine la direction du scroll
-  if (currentScrollY < lastScrollY.value || currentScrollY < 100) {
-    // Scrolling vers le haut ou en haut de la page
-    isVisible.value = true
-  } else if (currentScrollY > lastScrollY.value && currentScrollY > 100) {
-    // Scrolling vers le bas et pas en haut de la page
-    isVisible.value = false
-    // Ferme le menu mobile si ouvert
-    isMobileMenuOpen.value = false
-  }
-
-  lastScrollY.value = currentScrollY
+  isScrolled.value = window.scrollY > 20
 }
 
 onMounted(() => {
@@ -60,75 +41,55 @@ const closeMobileMenu = () => {
 
 <template>
   <header
-    ref="headerRef"
-    class="fixed left-0 right-0 z-50 transition-all duration-500"
+    class="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-200"
     :class="[
       isScrolled
-        ? 'bg-petrol backdrop-blur-md shadow-lg py-3 border-b border-or/30'
-        : 'bg-transparent py-6',
-      isVisible ? 'top-0' : '-top-32'
+        ? 'bg-white text-[#0b1f3a] shadow-[0_4px_18px_rgba(11,31,58,0.08)]'
+        : 'bg-transparent text-white'
     ]"
   >
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <nav class="flex items-center justify-between">
-        <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center gap-3" @click="closeMobileMenu">
-          <img 
-            src="/images/logo-removebg-preview.png" 
-            alt="IMAAD Financial Group" 
-            class="h-12 lg:h-16 w-auto transition-all duration-300 brightness-0 invert"
-          />
-          <div class="hidden sm:block">
-            <span 
-              class="font-playfair text-lg lg:text-xl font-semibold transition-colors duration-300 text-white"
-            >
-              IMAAD
-            </span>
-            <span 
-              class="block text-xs font-montserrat tracking-widest transition-colors duration-300 text-or"
-            >
-              FINANCIAL GROUP
-            </span>
-          </div>
-        </NuxtLink>
+    <div class="container mx-auto flex items-center justify-between" style="max-width: 1100px;">
+      <!-- Logo -->
+      <NuxtLink to="/" class="flex items-center gap-3" @click="closeMobileMenu">
+        <!-- SVG Logo matching wireframe -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="h-9 w-9">
+          <rect width="100" height="100" rx="12" fill="#c7a14a"/>
+          <path d="M18 72 L50 28 L82 72 Z" fill="#0b1f3a"/>
+        </svg>
+        <div class="font-bold text-sm font-poppins">IMAAD FINANCIAL GROUP</div>
+      </NuxtLink>
 
-        <!-- Desktop Navigation -->
-        <ul class="hidden lg:flex items-center gap-8">
-          <li v-for="item in navItems" :key="item.to">
-            <NuxtLink 
-              :to="item.to"
-              class="font-montserrat text-sm uppercase tracking-wider transition-all duration-300 relative group text-white hover:text-or"
-            >
-              {{ item.label }}
-              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-or transition-all duration-300 group-hover:w-full" />
-            </NuxtLink>
-          </li>
-        </ul>
-
-        <!-- CTA Button -->
-        <div class="hidden lg:block">
-          <NuxtLink 
-            to="/contact"
-            class="font-montserrat text-sm uppercase tracking-wider px-6 py-3 border-2 transition-all duration-300 border-or text-or hover:bg-or hover:text-bleu-nuit"
-          >
-            Nous Contacter
-          </NuxtLink>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <button 
-          class="lg:hidden p-2 transition-colors duration-300 text-white"
-          @click="toggleMobileMenu"
-          aria-label="Menu"
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-5">
+        <NuxtLink 
+          v-for="item in navItems" 
+          :key="item.to"
+          :to="item.to"
+          class="font-semibold text-sm hover:text-[#c7a14a] transition-colors"
         >
-          <svg v-if="!isMobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg v-else class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+          {{ item.label }}
+        </NuxtLink>
+        <NuxtLink 
+          to="/contact"
+          class="bg-[#c7a14a] text-[#0b1f3a] px-4 py-2.5 rounded-md font-bold text-sm hover:bg-[#d4b366] transition-colors"
+        >
+          Contact
+        </NuxtLink>
       </nav>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        class="lg:hidden p-2"
+        @click="toggleMobileMenu"
+        aria-label="Menu"
+      >
+        <svg v-if="!isMobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
 
     <!-- Mobile Menu -->
@@ -142,28 +103,26 @@ const closeMobileMenu = () => {
     >
       <div 
         v-if="isMobileMenuOpen" 
-        class="lg:hidden absolute top-full left-0 right-0 bg-bleu-nuit shadow-2xl"
+        class="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg text-[#0b1f3a]"
       >
-        <ul class="py-6 px-6 space-y-4">
-          <li v-for="item in navItems" :key="item.to">
-            <NuxtLink 
-              :to="item.to"
-              class="block font-montserrat text-white text-lg py-3 border-b border-white/10 hover:text-or transition-colors duration-300"
-              @click="closeMobileMenu"
-            >
-              {{ item.label }}
-            </NuxtLink>
-          </li>
-          <li class="pt-4">
-            <NuxtLink 
-              to="/contact"
-              class="block w-full text-center font-montserrat text-sm uppercase tracking-wider px-6 py-4 bg-or text-bleu-nuit hover:bg-or-light transition-all duration-300"
-              @click="closeMobileMenu"
-            >
-              Nous Contacter
-            </NuxtLink>
-          </li>
-        </ul>
+        <nav class="py-4 px-6 space-y-2">
+          <NuxtLink 
+            v-for="item in navItems" 
+            :key="item.to"
+            :to="item.to"
+            class="block font-semibold text-base py-3 border-b border-gray-100 hover:text-[#c7a14a] transition-colors"
+            @click="closeMobileMenu"
+          >
+            {{ item.label }}
+          </NuxtLink>
+          <NuxtLink 
+            to="/contact"
+            class="block w-full text-center bg-[#c7a14a] text-[#0b1f3a] px-4 py-3 rounded-md font-bold text-sm mt-4 hover:bg-[#d4b366] transition-colors"
+            @click="closeMobileMenu"
+          >
+            Contact
+          </NuxtLink>
+        </nav>
       </div>
     </Transition>
   </header>
@@ -171,6 +130,6 @@ const closeMobileMenu = () => {
 
 <style scoped>
 header {
-  will-change: background-color, padding;
+  will-change: background-color, color, box-shadow;
 }
 </style>

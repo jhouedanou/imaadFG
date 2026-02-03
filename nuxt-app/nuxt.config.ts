@@ -102,7 +102,7 @@ export default defineNuxtConfig({
           name: 'description',
           content: 'Catalyseur de la Souveraineté et de la Croissance Durable en Afrique'
         },
-        { name: 'theme-color', content: '#0A192F' }
+        { name: 'theme-color', content: '#0b1f3a' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -110,7 +110,7 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { 
           rel: 'stylesheet', 
-          href: 'https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400;500;600;700&display=swap' 
+          href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap' 
         }
       ]
     }

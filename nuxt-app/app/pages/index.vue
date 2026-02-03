@@ -2,63 +2,48 @@
 import { ref, onMounted, computed } from 'vue'
 
 // Import site data from JSON
-const { site, pages, images } = useSiteData()
+const { site, pages, images, footer } = useSiteData()
 const homeData = computed(() => pages.accueil)
+const activitesData = computed(() => pages['nos-activites'])
 
 // SEO - use data from JSON
 useHead({
   title: `${site.name} - ${site.tagline}`,
   meta: [
-    { name: 'description', content: homeData.value?.presentation?.description || 'IMAAD Financial Group accompagne les États et entreprises africaines dans leurs besoins de financement souverain, corporate finance et partenariats public-privé.' },
+    { name: 'description', content: homeData.value?.presentation?.description || 'IMAAD Financial Group structure et finance des projets souverains, PPP et corporate en Afrique.' },
     { property: 'og:title', content: site.name },
     { property: 'og:description', content: site.tagline },
     { property: 'og:type', content: 'website' },
-    { name: 'theme-color', content: '#0B1E3B' }
+    { name: 'theme-color', content: '#0b1f3a' }
   ]
 })
 
-// Verticaux data from JSON (nos-activites leviers) with images from JSON
-const verticaux = computed(() => {
-  const leviers = pages['nos-activites']?.modele?.leviers
-  const imgVerticaux = images?.verticaux || {}
-  
+// Domaines (services) from JSON
+const domaines = computed(() => {
+  const leviers = activitesData.value?.modele?.leviers
   if (leviers && leviers.length > 0) {
-    return leviers.map((levier, index) => ({
+    return leviers.map((levier: any) => ({
       title: levier.title,
-      description: levier.description,
-      // Images from JSON (images.verticaux) - using camelCase keys
-      image: index === 0 
-        ? imgVerticaux.financementSouverain || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80'
-        : index === 1 
-          ? imgVerticaux.corporateFinance || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80'
-          : imgVerticaux.ppp || 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
-      icon: levier.icon,
-      link: `/nos-activites#${levier.id}`
+      description: levier.description
     }))
   }
-  // Fallback with images from JSON
   return [
-    {
-      title: 'Financement Souverain',
-      description: 'Accompagnement des États dans la mobilisation de financements concessionnels, semi-concessionnels et commerciaux.',
-      image: imgVerticaux.financementSouverain || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80',
-      icon: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier4ICONE.png',
-      link: '/nos-activites#financement-souverain'
-    },
-    {
-      title: 'Corporate & Trade Finance',
-      description: 'Mobilisation de fonds CAPEX & OPEX pour les entreprises. Financement structuré.',
-      image: imgVerticaux.corporateFinance || 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-      icon: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier1banque.png',
-      link: '/nos-activites#corporate-finance'
-    },
-    {
-      title: 'Partenariats Public-Privé',
-      description: 'Conseil et développement de projets PPP. Structuration financière de grands projets.',
-      image: imgVerticaux.ppp || 'https://images.unsplash.com/photo-1590674899484-13da0f721f26?w=1200&q=80',
-      icon: 'https://assets.nicepagecdn.com/23954ad7/5333801/images/Fichier2ICONE.png',
-      link: '/nos-activites#ppp'
-    }
+    { title: 'Financement Souverain', description: 'Mobilisation de financements concessionnels, restructuration de dette publique et appuis budgétaires.' },
+    { title: 'Partenariats Public‑Privé (PPP)', description: 'Conseil, structuration et développement d\'infrastructures en partenariat étatique et privé.' },
+    { title: 'Corporate & Trade Finance', description: 'Financement CAPEX & OPEX pour entreprises: industrie, logistique, immobilier.' }
+  ]
+})
+
+// Projets from JSON
+const projets = computed(() => {
+  const projetsData = activitesData.value?.projets?.items
+  if (projetsData && projetsData.length > 0) {
+    return projetsData
+  }
+  return [
+    { nom: 'Route Abidjan – San Pedro', pays: 'Côte d\'Ivoire', montant: '150 M€', statut: 'Closé en 2023' },
+    { nom: 'Adduction eau Grand‑Abidjan', pays: 'Côte d\'Ivoire', montant: '278 M€', statut: 'Closing 2026' },
+    { nom: 'Renforcement réseau gaz', pays: 'Nigéria', montant: '500 M€', statut: 'Closing 2026' }
   ]
 })
 
@@ -66,393 +51,296 @@ const verticaux = computed(() => {
 const stats = computed(() => {
   const impactStats = homeData.value?.impact?.stats
   if (impactStats && impactStats.length > 0) {
-    return impactStats.map(stat => ({
-      value: stat.value,
-      label: stat.label
-    }))
+    return impactStats.slice(0, 3)
   }
-  // Fallback
   return [
     { value: '+1 Md €', label: 'mobilisés depuis 2020' },
-    { value: '+20', label: 'projets finalisés' },
     { value: '15', label: 'pays couverts' },
-    { value: '3 Mds €', label: 'portefeuille projets' }
+    { value: '20+', label: 'projets PPP' }
   ]
 })
 
-// Hero animation
-const heroRef = ref<HTMLElement | null>(null)
-const titleRef = ref<HTMLElement | null>(null)
-const subtitleRef = ref<HTMLElement | null>(null)
+// Valeurs from JSON
+const valeurs = computed(() => {
+  const valeursData = homeData.value?.valeurs?.items
+  if (valeursData && valeursData.length > 0) {
+    return valeursData
+  }
+  return [
+    { title: 'Souveraineté', description: 'Renforcer l\'autonomie financière des États.' },
+    { title: 'Impact', description: 'Projets durables, création d\'emplois et valeur sociale.' }
+  ]
+})
 
-onMounted(async () => {
+// Équipe from JSON
+const equipe = computed(() => {
+  const direction = pages['notre-equipe']?.direction
+  if (direction && direction.length >= 3) {
+    return direction.slice(0, 3)
+  }
+  return [
+    { nom: 'Issa Mehmet N\'Diaye', poste: 'Co-fondateur & Directeur Général' },
+    { nom: 'Rym Moulaye‑Idriss', poste: 'Co-fondatrice & Directrice Générale Adjointe' },
+    { nom: 'Pierre Wolf', poste: 'Président du Conseil de Gestion' }
+  ]
+})
+
+// Header scroll state
+const isScrolled = ref(false)
+
+onMounted(() => {
   if (import.meta.client) {
-    const { gsap } = await import('gsap')
-    const { ScrollTrigger } = await import('gsap/ScrollTrigger')
-    gsap.registerPlugin(ScrollTrigger)
-    
-    // Hero animations
-    const tl = gsap.timeline({ delay: 0.5 })
-    
-    tl.from(titleRef.value, {
-      y: 100,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power4.out'
-    })
-    .from(subtitleRef.value, {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out'
-    }, '-=0.6')
-    
-    // Parallax effect on hero
-    gsap.to('.hero-bg', {
-      yPercent: 30,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroRef.value,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
-    })
-    
-    // Stats animation
-    gsap.from('.stat-item', {
-      y: 60,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.stats-section',
-        start: 'top 80%'
-      }
+    window.addEventListener('scroll', () => {
+      isScrolled.value = window.scrollY > 20
     })
   }
 })
 </script>
 
 <template>
-  <div class="page-home">
+  <div class="page-home bg-[#f7f7f8]">
     <!-- Hero Section -->
-    <section 
-      ref="heroRef"
-      class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
-    >
-      <!-- Background -->
-      <div 
-        class="hero-bg absolute inset-0 bg-cover bg-center"
-        :style="`background-image: url('${homeData?.hero?.backgroundImage || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80'}')`"
-      />
-      
-      <!-- Overlay -->
-      <div class="absolute inset-0 bg-bleu-nuit/70" />
-      
-      <!-- Content -->
-      <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <h1 
-          ref="titleRef"
-          class="font-playfair text-hero text-white mb-8"
-        >
-          Catalyseur de la <span class="text-or">Souveraineté</span><br />
-          et de la Croissance Durable
-        </h1>
-        
-        <p 
-          ref="subtitleRef"
-          class="font-montserrat text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-12"
-        >
-          {{ homeData?.presentation?.description || 'IMAAD Financial Group accompagne les États et entreprises dans leurs projets d\'infrastructures et de développement à fort impact économique et social.' }}
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <NuxtLink 
-            to="/nos-activites"
-            class="font-montserrat text-sm uppercase tracking-widest px-8 py-4 bg-or text-bleu-nuit hover:bg-or-light transition-all duration-300"
-          >
-            Découvrir nos services
-          </NuxtLink>
-          <NuxtLink 
-            to="/contact"
-            class="font-montserrat text-sm uppercase tracking-widest px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-bleu-nuit transition-all duration-300"
-          >
-            Nous contacter
-          </NuxtLink>
-        </div>
-      </div>
-      
-      <!-- Scroll Indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg class="w-6 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 40">
-          <rect x="1" y="1" width="22" height="38" rx="11" stroke-width="2" />
-          <circle cx="12" cy="12" r="3" fill="currentColor" class="animate-pulse" />
-        </svg>
-      </div>
-    </section>
-
-    <!-- Verticaux Section (Style Teyliom) -->
-    <section class="verticaux-section">
-      <div class="py-20 lg:py-0">
-        <!-- Section Header (Mobile) -->
-        <div class="lg:hidden px-6 mb-12">
-          <h2 class="font-playfair text-display text-bleu-nuit mb-4">
-            Nos Domaines d'Excellence
-          </h2>
-          <p class="font-montserrat text-gray-600">
-            Trois piliers pour accompagner votre croissance
-          </p>
-        </div>
-        
-        <!-- Desktop: Full height columns -->
-        <div class="hidden lg:flex">
-          <VerticalCard 
-            v-for="(vertical, index) in verticaux"
-            :key="vertical.title"
-            :title="vertical.title"
-            :description="vertical.description"
-            :image="vertical.image"
-            :link="vertical.link"
-            :index="index"
-            class="flex-1"
-          />
-        </div>
-        
-        <!-- Mobile: Stacked cards -->
-        <div class="lg:hidden px-6 space-y-6">
-          <div 
-            v-for="(vertical, index) in verticaux"
-            :key="vertical.title"
-            class="relative h-[400px] rounded-xl overflow-hidden"
-          >
-            <div 
-              class="absolute inset-0 bg-cover bg-center"
-              :style="{ backgroundImage: `url(${vertical.image})` }"
-            />
-            <div class="absolute inset-0 bg-bleu-nuit/60" />
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
-              <span class="text-or font-playfair text-4xl font-light mb-2 opacity-50">
-                0{{ index + 1 }}
-              </span>
-              <h3 class="font-playfair text-2xl mb-3">{{ vertical.title }}</h3>
-              <p class="font-montserrat text-sm text-gray-200 mb-4">{{ vertical.description }}</p>
+    <section class="hero relative text-white" style="padding-top: 88px; background: linear-gradient(180deg, rgba(11,31,58,0.9), rgba(11,31,58,0.75)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80') center/cover no-repeat;">
+      <div class="container mx-auto px-6 py-16">
+        <div class="grid lg:grid-cols-[1fr_420px] gap-8 items-center">
+          <!-- Left content -->
+          <div>
+            <h1 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight font-poppins">
+              {{ homeData?.hero?.title || 'Catalyseur de la souveraineté et de la croissance durable' }}
+            </h1>
+            <p class="text-white/85 text-lg mb-5 font-opensans">
+              {{ homeData?.hero?.subtitle || 'Imaad Financial Group structure et finance des projets souverains, PPP et corporate en Afrique, au Moyen‑Orient et en Amérique Latine.' }}
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex gap-3 flex-wrap mb-6">
               <NuxtLink 
-                :to="vertical.link"
-                class="inline-flex items-center gap-2 text-or font-montserrat text-sm uppercase tracking-wider"
+                to="/nos-activites"
+                class="bg-[#c7a14a] text-[#0b1f3a] px-4 py-3 rounded-md font-bold text-sm hover:bg-[#d4b366] transition-colors"
               >
-                Découvrir
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                Découvrir nos solutions
+              </NuxtLink>
+              <NuxtLink 
+                to="/nos-activites#projets"
+                class="bg-transparent border border-white/20 text-white/95 px-4 py-3 rounded-md font-semibold text-sm hover:bg-white/10 transition-colors"
+              >
+                Voir nos réalisations
               </NuxtLink>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section bg-ivory py-20 lg:py-32">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="font-playfair text-display text-bleu-nuit mb-4">
-            Notre Impact
-          </h2>
-          <p class="font-montserrat text-gray-600 max-w-2xl mx-auto">
-            Des résultats mesurables au service de la croissance africaine
-          </p>
-        </div>
-        
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          <div 
-            v-for="stat in stats" 
-            :key="stat.label"
-            class="stat-item text-center"
-          >
-            <div class="font-playfair text-4xl lg:text-6xl text-or mb-2">
-              {{ stat.value }}
-            </div>
-            <div class="font-montserrat text-sm text-gray-600 uppercase tracking-wider">
-              {{ stat.label }}
+            <!-- Stats -->
+            <div class="flex gap-4 flex-wrap mt-6">
+              <div v-for="stat in stats" :key="stat.label" class="flex gap-3 items-center">
+                <strong class="text-xl text-[#c7a14a] min-w-[110px] font-poppins">{{ stat.value }}</strong>
+                <span class="text-[#6b7280] text-sm">{{ stat.label }}</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- About Preview Section -->
-    <section class="bg-bleu-nuit py-20 lg:py-32 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div>
-            <span class="font-montserrat text-or text-sm uppercase tracking-widest mb-4 block">
-              À propos
-            </span>
-            <h2 class="font-playfair text-display text-white mb-6">
-              Une vision panafricaine au service de l'excellence
-            </h2>
-            <p class="font-montserrat text-gray-400 leading-relaxed mb-6">
-              IMAAD Financial Group est une banque d'affaires panafricaine indépendante, 
-              spécialisée dans la structuration, le financement et la réalisation de projets 
-              structurants en Afrique, au Moyen-Orient et en Amérique Latine.
-            </p>
-            <p class="font-montserrat text-gray-400 leading-relaxed mb-8">
-              Notre mission : accélérer la souveraineté financière des États, renforcer 
-              les capacités d'investissement des entreprises et créer des ponts entre 
-              capitaux internationaux et projets à fort impact.
-            </p>
+          <!-- Right: Contact Box -->
+          <aside class="bg-white/5 p-5 rounded-lg border border-white/10">
+            <h3 class="text-lg font-semibold mb-2 font-poppins">Contact rapide</h3>
+            <p class="text-white/90 text-sm mb-4">Envoyez une demande ou téléchargez notre brochure institutionnelle.</p>
+            <input 
+              type="text" 
+              placeholder="Nom / Organisation"
+              class="w-full p-3 rounded-md border border-white/10 bg-transparent text-white placeholder-white/50 mb-3 text-sm"
+            />
             <NuxtLink 
-              to="/notre-equipe"
-              class="inline-flex items-center gap-3 font-montserrat text-or text-sm uppercase tracking-widest hover:gap-5 transition-all duration-300"
+              to="/contact"
+              class="inline-block bg-[#c7a14a] text-[#0b1f3a] px-4 py-3 rounded-md font-bold text-sm hover:bg-[#d4b366] transition-colors"
             >
-              Découvrir notre équipe
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              Contacter nos experts
             </NuxtLink>
-          </div>
-          
-          <div class="relative">
-            <div class="aspect-[4/3] rounded-xl overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80" 
-                alt="IMAAD Financial Group" 
-                class="w-full h-full object-cover"
-              />
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 px-6">
+      <div class="container mx-auto">
+        <div class="flex gap-5 flex-wrap lg:flex-nowrap items-stretch">
+          <!-- Left Content -->
+          <div class="flex-1">
+            <h2 class="text-2xl font-bold text-[#0b1f3a] mb-4 font-poppins mt-0">
+              {{ homeData?.presentation?.title || 'Notre modèle et nos valeurs' }}
+            </h2>
+            <p class="text-[#6b7280] mb-6">
+              {{ homeData?.presentation?.description || 'Imaad Financial Group est une banque d\'affaires panafricaine qui place la finance au service du développement, de la compétitivité et de la durabilité. Nous combinons vision internationale et exécution locale.' }}
+            </p>
+
+            <!-- Service Cards -->
+            <div class="grid md:grid-cols-3 gap-4 mt-5">
+              <div 
+                v-for="domaine in domaines" 
+                :key="domaine.title"
+                class="bg-white rounded-lg p-5 shadow-[0_8px_30px_rgba(2,6,23,0.06)]"
+              >
+                <h3 class="text-[#0b1f3a] font-semibold mb-2 text-base font-poppins">{{ domaine.title }}</h3>
+                <p class="text-[#6b7280] text-sm">{{ domaine.description }}</p>
+              </div>
             </div>
-            <!-- Decorative element -->
-            <div class="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-or rounded-xl -z-10" />
+          </div>
+
+          <!-- Right: Values -->
+          <div class="w-full lg:w-80">
+            <div class="flex gap-3 h-full">
+              <div 
+                v-for="valeur in valeurs" 
+                :key="valeur.title"
+                class="flex-1 bg-white p-5 rounded-lg shadow-[0_6px_18px_rgba(2,6,23,0.04)] text-center"
+              >
+                <h4 class="text-[#0b1f3a] font-semibold mb-1 text-sm font-poppins">{{ valeur.title }}</h4>
+                <p class="text-[#6b7280] text-xs">{{ valeur.description }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Highlight -->
-    <section class="py-20 lg:py-32 bg-white">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <span class="font-montserrat text-or text-sm uppercase tracking-widest mb-4 block">
-            Projets phares
-          </span>
-          <h2 class="font-playfair text-display text-bleu-nuit mb-4">
-            Des réalisations concrètes
-          </h2>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project Card 1 -->
-          <div class="group bg-ivory rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500">
-            <div class="aspect-video overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80" 
-                alt="Route Abidjan - San Pedro"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div class="p-6">
-              <span class="font-montserrat text-xs text-or uppercase tracking-wider">Côte d'Ivoire</span>
-              <h3 class="font-playfair text-xl text-bleu-nuit mt-2 mb-3">Route Abidjan - San Pedro</h3>
-              <p class="font-montserrat text-sm text-gray-600 mb-4">Financement de 150 M€ pour l'infrastructure routière majeure.</p>
-              <div class="flex justify-between items-center">
-                <span class="font-playfair text-2xl text-or">150 M€</span>
-                <span class="font-montserrat text-xs text-gray-500">Closé 2023</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project Card 2 -->
-          <div class="group bg-ivory rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500">
-            <div class="aspect-video overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" 
-                alt="Adduction eau potable Grand-Abidjan"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div class="p-6">
-              <span class="font-montserrat text-xs text-or uppercase tracking-wider">Côte d'Ivoire</span>
-              <h3 class="font-playfair text-xl text-bleu-nuit mt-2 mb-3">Adduction Eau Potable Grand-Abidjan</h3>
-              <p class="font-montserrat text-sm text-gray-600 mb-4">Programme d'accès à l'eau potable pour la métropole.</p>
-              <div class="flex justify-between items-center">
-                <span class="font-playfair text-2xl text-or">278 M€</span>
-                <span class="font-montserrat text-xs text-gray-500">Closing 2026</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project Card 3 -->
-          <div class="group bg-ivory rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500">
-            <div class="aspect-video overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" 
-                alt="Construction collèges"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            <div class="p-6">
-              <span class="font-montserrat text-xs text-or uppercase tracking-wider">Côte d'Ivoire</span>
-              <h3 class="font-playfair text-xl text-bleu-nuit mt-2 mb-3">56 Collèges de Base 4</h3>
-              <p class="font-montserrat text-sm text-gray-600 mb-4">Programme éducatif national d'infrastructures scolaires.</p>
-              <div class="flex justify-between items-center">
-                <span class="font-playfair text-2xl text-or">137 M€</span>
-                <span class="font-montserrat text-xs text-gray-500">Closé 2025</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="text-center mt-12">
-          <NuxtLink 
-            to="/nos-activites"
-            class="inline-flex items-center gap-3 font-montserrat text-bleu-nuit text-sm uppercase tracking-widest border-2 border-bleu-nuit px-8 py-4 hover:bg-bleu-nuit hover:text-white transition-all duration-300"
+    <!-- Services/Domaines Section -->
+    <section id="services" class="py-6 px-6">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold text-[#0b1f3a] mb-2 font-poppins">Domaines d'excellence</h2>
+        <p class="text-[#6b7280] mb-5">Solutions sur-mesure pour États, entreprises et investisseurs.</p>
+
+        <!-- Projects Grid -->
+        <div class="grid md:grid-cols-3 gap-4 mt-4">
+          <div 
+            v-for="projet in projets" 
+            :key="projet.nom"
+            class="bg-gradient-to-b from-white to-[#fbfbfc] p-4 rounded-lg border border-gray-200"
           >
-            Voir tous nos projets
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            <h4 class="text-[#0b1f3a] font-semibold mb-1 text-base font-poppins">{{ projet.nom }}</h4>
+            <p class="text-[#6b7280] text-sm">{{ projet.montant }} — {{ projet.pays }} — {{ projet.statut }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="projects" class="py-6 px-6">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold text-[#0b1f3a] mb-2 font-poppins">{{ homeData?.impact?.title || 'Projets & Impact' }}</h2>
+        <p class="text-[#6b7280] mb-5">{{ homeData?.impact?.subtitle || 'Des résultats mesurables, une vision durable.' }}</p>
+
+        <div class="flex gap-5 flex-wrap mt-4">
+          <!-- KPI -->
+          <div class="flex-1">
+            <div class="bg-white p-4 rounded-lg min-w-[180px] inline-block">
+              <div class="text-xl font-bold text-[#c7a14a] font-poppins">+1 Md €</div>
+              <div class="text-[#6b7280] text-sm">Mobilisés depuis 2020</div>
+            </div>
+          </div>
+          
+          <!-- Map Placeholder -->
+          <div class="flex-[2] min-w-[240px]">
+            <div class="bg-white rounded-lg p-3 border border-gray-200">
+              <h4 class="text-[#0b1f3a] font-semibold text-sm mb-2 font-poppins">Présence</h4>
+              <div class="h-44 bg-gradient-to-r from-[#eef2ff] to-white rounded-md flex items-center justify-center text-[#6b7280]">
+                Carte interactive — {{ footer?.bureaux?.length || 8 }} bureaux
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-6 px-6">
+      <div class="container mx-auto">
+        <h2 class="text-2xl font-bold text-[#0b1f3a] mb-2 font-poppins">Équipe & Gouvernance</h2>
+        <p class="text-[#6b7280] mb-5">Leadership, intégrité et influence intercontinentale.</p>
+
+        <div class="grid md:grid-cols-3 gap-4 mt-4">
+          <div 
+            v-for="membre in equipe" 
+            :key="membre.nom"
+            class="bg-white p-4 rounded-lg text-center"
+          >
+            <div class="w-full h-40 bg-gray-200 rounded-md mb-3 overflow-hidden">
+              <img 
+                v-if="membre.photo" 
+                :src="membre.photo" 
+                :alt="membre.nom"
+                class="w-full h-full object-cover grayscale-[70%]"
+              />
+              <div v-else class="w-full h-full flex items-center justify-center text-gray-500">Photo</div>
+            </div>
+            <h4 class="text-[#0b1f3a] font-semibold text-sm mb-1 font-poppins">{{ membre.nom }}</h4>
+            <div class="text-[#6b7280] text-xs">{{ membre.poste }}</div>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <NuxtLink 
+            to="/notre-equipe"
+            class="inline-block bg-[#0b1f3a] text-white px-5 py-3 rounded-md font-semibold text-sm hover:bg-[#1a3358] transition-colors"
+          >
+            Voir toute l'équipe
           </NuxtLink>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="relative py-20 lg:py-32 overflow-hidden">
-      <div 
-        class="absolute inset-0 bg-cover bg-center bg-fixed"
-        style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80')"
-      />
-      <div class="absolute inset-0 bg-bleu-nuit/85" />
-      
-      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <h2 class="font-playfair text-display text-white mb-6">
-          Prêt à concrétiser vos ambitions ?
-        </h2>
-        <p class="font-montserrat text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-          Discutons de vos projets et découvrez comment IMAAD Financial Group 
-          peut vous accompagner vers le succès.
-        </p>
-        <NuxtLink 
-          to="/contact"
-          class="inline-flex items-center gap-3 font-montserrat text-sm uppercase tracking-widest px-10 py-5 bg-or text-bleu-nuit hover:bg-or-light transition-all duration-300"
-        >
-          Contactez-nous
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </NuxtLink>
+    <!-- Contact Section -->
+    <section id="contact" class="py-8 px-6 pb-16">
+      <div class="container mx-auto max-w-[900px]">
+        <h2 class="text-2xl font-bold text-[#0b1f3a] mb-2 font-poppins">Contact</h2>
+        <p class="text-[#6b7280] mb-5">Pour toute demande institutionnelle, utilisez le formulaire ci‑dessous ou écrivez à {{ site.contact?.email || 'info@imaadfg.com' }}</p>
+
+        <form class="grid md:grid-cols-2 gap-3 mt-4">
+          <input 
+            placeholder="Nom complet" 
+            class="p-3 rounded-lg border border-gray-300 text-sm"
+            required
+          />
+          <input 
+            placeholder="Email" 
+            type="email"
+            class="p-3 rounded-lg border border-gray-300 text-sm"
+            required
+          />
+          <input 
+            placeholder="Organisation" 
+            class="p-3 rounded-lg border border-gray-300 text-sm"
+          />
+          <select class="p-3 rounded-lg border border-gray-300 text-sm text-gray-600">
+            <option>Objet de la demande</option>
+            <option>Financement Souverain</option>
+            <option>PPP</option>
+            <option>Corporate Finance</option>
+          </select>
+          <textarea 
+            placeholder="Message" 
+            class="col-span-full p-3 rounded-lg border border-gray-300 h-32 text-sm resize-none"
+          ></textarea>
+          <button 
+            type="submit"
+            class="col-span-full p-3 rounded-lg bg-[#0b1f3a] text-white font-semibold hover:bg-[#1a3358] transition-colors"
+          >
+            Envoyer la demande
+          </button>
+        </form>
       </div>
     </section>
   </div>
 </template>
 
 <style scoped>
-.page-home {
-  overflow-x: hidden;
+.container {
+  max-width: 1100px;
 }
 
-.hero-bg {
-  will-change: transform;
+.hero {
+  min-height: auto;
+}
+
+@media (max-width: 900px) {
+  .hero .grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

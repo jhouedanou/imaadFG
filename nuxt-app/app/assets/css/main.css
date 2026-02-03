@@ -1,49 +1,53 @@
 /* ============================================
-   IMAAD Financial Group - Industrial Tech Design System
-   Direction: Corporate/Industrial Premium
-   Politique "Zéro Blanc" - WCAG 2.1 AA Compliant
+   IMAAD Financial Group - Design System
+   Basé sur wireframe client
    ============================================ */
 
 /* CSS Custom Properties - Design System Core */
 :root {
-  /* Couleurs Principales */
-  --bg-light: #F0F4F8;        /* Architectural Grey - Fond clair */
-  --bg-dark: #0A192F;         /* Deep Petrol Navy - Fond sombre */
-  --accent-gold: #C9A227;     /* Golden Yellow - Accent principal */
-  --accent-cyan: #C9A227;     /* Alias vers Gold pour compatibilité */
-  --text-dark: #1A202C;       /* Deep Charcoal - Texte sur fond clair */
-  --text-light: #E2E8F0;      /* Cool Silver - Texte sur fond sombre */
+  /* Couleurs Principales - Wireframe Client */
+  --blue-900: #0b1f3a;        /* Deep Navy - Fond sombre principal */
+  --blue-600: #1d4ed8;        /* Bleu électrique */
+  --gold: #c7a14a;            /* Or doré - Accent principal */
+  --bg: #f7f7f8;              /* Fond gris clair */
+  --muted: #6b7280;           /* Gris pour texte secondaire */
+  
+  /* Aliases compatibilité */
+  --bg-light: #f7f7f8;
+  --bg-dark: #0b1f3a;
+  --accent-gold: #c7a14a;
+  --text-dark: #111111;
+  --text-light: #ffffff;
   
   /* Couleurs Secondaires */
-  --petrol-light: #112240;
-  --petrol-dark: #020C1B;
-  --gold-light: #D4B84A;
-  --gold-dark: #A68B1F;
-  --silver-dark: #CBD5E0;
-  --charcoal-light: #2D3748;
+  --petrol-light: #1a3358;
+  --petrol-dark: #061528;
+  --gold-light: #d4b366;
+  --gold-dark: #a68937;
   
-  /* Typographie */
-  --font-titles: 'Michroma', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  /* Typographie - Polices du wireframe */
+  --font-titles: 'Poppins', 'Open Sans', system-ui, sans-serif;
+  --font-body: 'Open Sans', 'Poppins', system-ui, sans-serif;
   
   /* Navigation */
-  --nav-height: 100px;
-  --nav-height-scrolled: 70px;
+  --nav-height: 80px;
+  --nav-height-scrolled: 64px;
   
   /* Transitions */
-  --transition-fast: 0.3s ease;
-  --transition-medium: 0.4s ease;
-  --transition-slow: 0.6s ease;
-  --transition-gsap: 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  --transition: 200ms ease;
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
   
   /* Shadows */
-  --shadow-industrial: 0 4px 30px rgba(0, 0, 0, 0.3);
-  --shadow-glow-gold: 0 0 30px rgba(201, 162, 39, 0.4);
-  --shadow-inner: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 8px 30px rgba(2, 6, 23, 0.06);
+  --shadow-header: 0 4px 18px rgba(11, 31, 58, 0.08);
   
   /* Spacing */
-  --section-padding: 5rem;
-  --container-padding: 5%;
+  --max-width: 1100px;
+  --container-padding: 24px;
+  --radius: 8px;
+  --section-padding: 4rem;
 }
 
 /* Base Reset */
@@ -64,20 +68,23 @@ html {
 
 body {
   color: var(--text-dark);
-  background-color: var(--bg-light);
-  line-height: 1.6;
+  background-color: var(--bg);
+  line-height: 1.5;
   overflow-x: hidden;
 }
 
-/* POLITIQUE ZÉRO BLANC - Override Tailwind white */
-.bg-white { background-color: var(--bg-light) !important; }
+/* Container utility */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
 
-/* Headings - Michroma (Géométrique, Majuscules) - TAILLES UNIFORMES */
+/* Headings - Poppins */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-titles);
-  font-weight: 400;
-  font-size: 1.5rem;
-  line-height: 1.3;
+  font-weight: 700;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
