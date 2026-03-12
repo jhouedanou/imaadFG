@@ -3,10 +3,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
-  // Configuration pour Netlify - génération statique
+  // Configuration pour Vercel
   ssr: true,
   nitro: {
-    preset: 'netlify'
+    preset: 'vercel'
   },
 
   css: [
